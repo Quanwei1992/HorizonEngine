@@ -69,13 +69,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir);$(ProjectDir)ThirdPart\Includes;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)ThirdPart\Libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,6 +117,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Component\Component.cpp" />
+    <ClCompile Include="Engine\Core\HorizonEngine.cpp" />
+    <ClCompile Include="Engine\Scene\GameObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\RenderSystem\RenderWindow.cpp" />
+    <ClCompile Include="Engine\RenderSystem\RenderSystem.cpp" />
+    <ClCompile Include="Engine\Scene\Scene.cpp" />
+    <ClCompile Include="Engine\Scene\Transform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Component\Component.h" />
+    <ClInclude Include="Engine\RenderSystem\RenderWindow.h" />
+    <ClInclude Include="Engine\RenderSystem\RenderSystem.h" />
+    <ClInclude Include="Engine\Scene\Scene.h" />
+    <ClInclude Include="Engine\Core\HorizonEngine.h" />
+    <ClInclude Include="Engine\Scene\GameObject.h" />
+    <ClInclude Include="Engine\Scene\Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

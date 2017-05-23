@@ -14,4 +14,53 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RenderSystem\RenderWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RenderSystem\RenderSystem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene\Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Core\HorizonEngine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene\GameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene\Transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\Component.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\RenderSystem\RenderWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RenderSystem\RenderSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene\Scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core\HorizonEngine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene\GameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene\Transform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\Component.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
