@@ -117,23 +117,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Component\Component.cpp" />
-    <ClCompile Include="Engine\Core\HorizonEngine.cpp" />
-    <ClCompile Include="Engine\Scene\GameObject.cpp" />
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Engine\RenderSystem\RenderWindow.cpp" />
-    <ClCompile Include="Engine\RenderSystem\RenderSystem.cpp" />
-    <ClCompile Include="Engine\Scene\Scene.cpp" />
-    <ClCompile Include="Engine\Scene\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Component\Component.h" />
-    <ClInclude Include="Engine\RenderSystem\RenderWindow.h" />
-    <ClInclude Include="Engine\RenderSystem\RenderSystem.h" />
-    <ClInclude Include="Engine\Scene\Scene.h" />
-    <ClInclude Include="Engine\Core\HorizonEngine.h" />
-    <ClInclude Include="Engine\Scene\GameObject.h" />
-    <ClInclude Include="Engine\Scene\Transform.h" />
+    <ClInclude Include="Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,10 +1,8 @@
-#include <Engine/Core/HorizonEngine.h>
+#include <Application.h>
+using namespace HorizonEngine;
 int main()
 {
-	HorizonEngine engine;
-	Scene scene;
-
-	engine.Run(scene);
-
+	Application app;
+	app.Run();
 	return 0;
 }
