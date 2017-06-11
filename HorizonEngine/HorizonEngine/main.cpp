@@ -1,6 +1,9 @@
 #include <Application.h>
 #include <Transform.h>
+#include <Camera.h>
+#include <MeshRenderer.h>
 #include <type_traits>
+#include "HelloWorldScene.h"
 using namespace std;
 using namespace HorizonEngine;
 
@@ -9,12 +12,9 @@ int main()
 {
 
 
-	Application app;
-	Scene scene;
-	auto go = scene.CreateGameObject();
-	auto trans = go.AddComponent<Transform>();
-	
-	app.Run(scene);
+
+	auto* scene = new HelloWorldScene();
+	Application::getSingleton().Run(*scene);
 	return 0;
 }
 

@@ -5,19 +5,23 @@
 
 using namespace HorizonEngine;
 
-void HorizonEngine::Application::Run(Scene & scene)
+void Application::Run(Scene & scene)
 {
-	mScene = scene;
+	mScene = &scene;
 	Init();
-
+	mScene->Start();
 
 	while (!glfwWindowShouldClose(this->mWindow))
 	{
 		Update();
-		Render();
+		RenderOneFrame();
 	}
 
 	// 清理资源
+}
+
+void HorizonEngine::Application::PostRenderable(Renderable & renderable)
+{
 }
 
 Application::Application()
@@ -29,7 +33,7 @@ Application::~Application()
 {
 }
 
-void HorizonEngine::Application::Init()
+void Application::Init()
 {
 	// 初始化OPENGL
 	// Init GLFW
@@ -49,47 +53,61 @@ void HorizonEngine::Application::Init()
 
 	// Define the viewport dimensions
 	glViewport(0, 0, 800, 600);
+
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
-void HorizonEngine::Application::Update()
+void Application::Update()
 {
 	glfwPollEvents();
 
 	// Set frame time
-	GLfloat currentFrame = glfwGetTime();
-	float deltaTime = currentFrame - lastFrame;
+	double currentFrame = glfwGetTime();
+	double deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
-	mScene.Update(deltaTime);
+	mScene->Update(deltaTime);
 }
 
-void HorizonEngine::Application::Render()
+void Application::Render(const Camera & camera)
 {
+	//清理framebuffer.
+	//设置view矩阵
+	//设置projection矩阵。
+
+	//对于每一个RenderAble.
+	//设置RenderSystem的状态。
+		//绑定Shader。
+		//绑定材质。
+	//使用RenderSystem执行RenderOp;
+	//完成。
+}
+
+
+
+void Application::RenderOneFrame()
+{
+	auto& objects = mScene->GetAllObjects();
 	// 获得场景中的相机.
 	std::vector<Camera*> cameras;
-	auto objects = mScene.GetAllObjects();
-	for (int i =0;i<objects.size();i++)
+	for (auto& obj : objects)
 	{
-		auto obj = objects[i];
-		auto components = obj->GetComponents();
-		for (int j =0;j<components.size();j++)
+		auto& components = obj->GetComponents();
+		for (auto component : components)
 		{
-			Camera* camera = dynamic_cast<Camera*>(components[i]);
+			component->OnPostRender();
+			auto* camera = dynamic_cast<Camera*>(component);
 			if (camera != nullptr)
 			{
 				cameras.push_back(camera);
 			}
 		}
 	}
-
-	// 每个相机开始渲染
-	for (int i = 0;i<cameras.size();i++)
+	for (auto* camera : cameras)
 	{
-		auto camera = cameras[i];
-		
+		Render(*camera);
 	}
-
-	// 向Shader传相机矩阵.
-	// 获得场景中的每一个GameObject.
-	// 渲染.
-	glfwSwapBuffers(mWindow);
+	// clear render queue.
+	mRenderQueue.clear();
 }
+
+

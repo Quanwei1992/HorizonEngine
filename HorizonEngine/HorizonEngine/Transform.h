@@ -10,10 +10,19 @@ namespace HorizonEngine
 	{
 
 	public:
-		const vec3& GetLocalPosition() { return mLocalPosition; }
-		void		SetLocalPosition(const vec3& position) { mLocalPosition = position; }
+		vec3	localPosition();
+		void	localPosition(vec3 position);
 
-		const vec3& GetPosition();
+		vec3	localRotation();
+		void	localRotation(vec3 rotation);
+
+		vec3	localScale();
+		void	localScale(vec3 scale);
+
+		mat4x4 localMatrix();
+
+		vec3 worldPosition();
+		mat4x4 worldMatrix();
 
 		void parent(Transform& parent);
 		Transform* parent() { return mParent; }
@@ -23,14 +32,11 @@ namespace HorizonEngine
 		vec3 mLocalPosition;
 		vec3 mLocalScale;
 		vec3 mLocalRotation;
-		mat4 mLocalMat;
-		mat4 mWorldMat;
-
+		mat4x4 mLocalMat;
 		Transform* mParent;
 		std::vector<Transform> mChidren;
 	private:
-		const glm::mat4x4& Combine();
-
+		mat4x4 Combine(vec3 position,vec3 rotation,vec3 scale);
 	public:
 		Transform();
 		~Transform();

@@ -7,13 +7,15 @@ namespace HorizonEngine
 	{
 
 	public:
-		GameObject CreateGameObject();
+		GameObject& CreateGameObject();
 		std::vector<GameObject*>& GetAllObjects();
+		virtual void Start();
+		virtual void Destory();
 
 	public:
 		Scene();
 		~Scene();
-		void Update(float deltaTime);
+		void Update(double deltaTime);
 
 	private:
 		std::vector<GameObject*> mObjects;

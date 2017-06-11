@@ -36,6 +36,45 @@
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="MeshRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HelloWorldScene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\RenderSystem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\RenderOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\Renderable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderPipeline\RenderPipeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\GL\ArrayBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\GL\ElementArrayBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\GL\VertexArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\GL\BufferManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -54,6 +93,45 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HelloWorldScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderOperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\Renderable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPipeline\RenderPipeline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\ArrayBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\ElementArrayBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\VertexArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\BufferManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

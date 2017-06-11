@@ -9,8 +9,26 @@ std::vector<Component*>& HorizonEngine::GameObject::GetComponents()
 	return mComponents;
 }
 
+void HorizonEngine::GameObject::Start()
+{
+	mIsStatred = true;
+	for (size_t i = 0; i < mComponents.size(); i++)
+	{
+		mComponents[i]->Start();
+	}
+}
 
-GameObject::GameObject()
+void HorizonEngine::GameObject::Destory()
+{
+	for (size_t i = 0; i < mComponents.size(); i++)
+	{
+		mComponents[i]->OnDestory();
+	}
+}
+
+
+GameObject::GameObject():
+	mIsStatred(false)
 {
 	mComponents.push_back(&mTransform);
 }

@@ -79,9 +79,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions> /NODEFAULTLIB:library %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,20 +124,46 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="RenderSystem\GL\BufferManager.cpp" />
+    <ClCompile Include="RenderSystem\GL\ElementArrayBuffer.cpp" />
+    <ClCompile Include="RenderSystem\GL\ArrayBuffer.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="RenderPipeline\RenderPipeline.cpp" />
+    <ClCompile Include="RenderSystem\Renderable.cpp" />
+    <ClCompile Include="RenderSystem\RenderOperation.cpp" />
+    <ClCompile Include="RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="RenderSystem\GL\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="RenderSystem\GL\BufferManager.h" />
+    <ClInclude Include="RenderSystem\GL\ElementArrayBuffer.h" />
+    <ClInclude Include="RenderSystem\GL\ArrayBuffer.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="HelloWorldScene.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="RenderPipeline\RenderPipeline.h" />
+    <ClInclude Include="RenderSystem\Renderable.h" />
+    <ClInclude Include="RenderSystem\RenderOperation.h" />
+    <ClInclude Include="RenderSystem\RenderSystem.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="RenderSystem\GL\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

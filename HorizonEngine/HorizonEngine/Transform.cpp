@@ -2,36 +2,87 @@
 #include <glm/gtc/matrix_transform.hpp>
 using namespace HorizonEngine;
 
-const vec3 & HorizonEngine::Transform::GetPosition()
+
+
+void HorizonEngine::Transform::localPosition(vec3 position)
 {
-	// 获得世界坐标,需要应用父节点的变换.
-	return mLocalPosition;
+	mLocalPosition = position;
+	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
 }
 
-void HorizonEngine::Transform::parent(Transform & parent)
+vec3 HorizonEngine::Transform::localRotation()
+{
+	return mLocalRotation;
+}
+
+void HorizonEngine::Transform::localRotation(vec3 rotation)
+{
+	mLocalRotation = rotation;
+	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
+}
+
+vec3 HorizonEngine::Transform::localScale()
+{
+	return mLocalScale;
+}
+
+void HorizonEngine::Transform::localScale(vec3 scale)
+{
+	mLocalScale = scale;
+	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
+}
+
+mat4x4 HorizonEngine::Transform::localMatrix()
+{
+	return mLocalMat;
+}
+
+vec3 Transform::worldPosition()
+{
+	vec4 pos(mLocalPosition,1);
+	auto world = worldMatrix() * pos;
+	return vec3(world.x,world.y,world.z);
+}
+
+mat4x4 HorizonEngine::Transform::worldMatrix()
+{
+	if (mParent != nullptr)
+	{
+		return mParent->worldMatrix() * mParent->localMatrix();
+	}
+	else
+	{
+		return mat4x4();
+	}
+}
+
+void Transform::parent(Transform & parent)
 {
 	mParent = &parent;
 
 }
 
-const glm::mat4x4 & Transform::Combine()
+mat4x4 HorizonEngine::Transform::Combine(vec3 position, vec3 rotation, vec3 scale)
 {
-	glm::mat4x4 temp;
-	temp = glm::scale(temp, mLocalScale);
-	temp = glm::rotate(temp,mLocalRotation.x,glm::vec3(1,0,0));
-	temp = glm::rotate(temp, mLocalRotation.y, glm::vec3(0, 1, 0));
-	temp = glm::rotate(temp, mLocalRotation.z, glm::vec3(0, 0, 1));
-	temp = glm::translate(temp, mLocalPosition);
-	mLocalMat = temp;
-	return mLocalMat;
+	mat4x4 mat;
+	mat = glm::scale(mat, scale);
+	mat = glm::rotate(mat, glm::radians(rotation.x), vec3(1, 0, 0));
+	mat = glm::rotate(mat, glm::radians(rotation.y), vec3(0, 1, 0));
+	mat = glm::rotate(mat, glm::radians(rotation.z), vec3(0, 0, 1));
+	mat = glm::translate(mat, position);
+	return mat;
 }
 
-HorizonEngine::Transform::Transform()
+HorizonEngine::Transform::Transform():
+	mLocalPosition(0,0,0),
+	mLocalScale(1,1,1),
+	mLocalRotation(0,0,0)
 {
 }
 
 HorizonEngine::Transform::~Transform()
 {
+
 }
 
 

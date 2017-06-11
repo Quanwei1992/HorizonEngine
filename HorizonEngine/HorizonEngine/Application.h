@@ -1,5 +1,7 @@
 #pragma once
 #include <Scene.h>
+#include "RenderSystem/Renderable.h"
+#include "Camera.h"
 // GLEW
 #define GLEW_STATIC
 #include <ThirdPart/Includes/GL/glew.h>
@@ -12,19 +14,28 @@ namespace HorizonEngine
 	{
 	public:
 		void Run(Scene& scene);
-		Application();
-		~Application();
+		void PostRenderable(Renderable& renderable);
+
 	private:
 		void Init();
 		void Update();
-		void Render();
-
+		void Render(const Camera & camera);
+		void RenderOneFrame();
+		Application();
+		~Application();
 	private:
-		Scene mScene;
+		Scene* mScene;
 		GLFWwindow* mWindow;
-		float lastFrame = 0.0f;
-
+		double lastFrame = 0.0f;
+		std::vector<Renderable*> mRenderQueue;
+	public:
+		static Application& getSingleton()
+		{
+			static Application theSingleton;
+			return theSingleton;
+		}
 	};
+	
 }
 
 

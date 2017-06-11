@@ -6,10 +6,10 @@ Component::Component()
 {
 }
 
-Component::Component(GameObject& onwer)
-{
-	this->mOnwer = &onwer;
-}
+//Component::Component(GameObject& onwer)
+//{
+//	this->mOnwer = &onwer;
+//}
 
 Component::~Component()
 {
