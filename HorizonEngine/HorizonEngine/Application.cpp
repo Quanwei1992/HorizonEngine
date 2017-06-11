@@ -22,7 +22,18 @@ void Application::Run(Scene & scene)
 
 void HorizonEngine::Application::PostRenderable(Renderable & renderable)
 {
+	mRenderQueue.push_back(&renderable);
 }
+
+BufferManager & HorizonEngine::Application::bufferManager()
+{
+	return *mBufferManager;
+}
+
+//GPUProgramManager & HorizonEngine::Application::GPUProgramManager()
+//{
+//	//return *mGPUPragramManager;
+//}
 
 Application::Application()
 {
@@ -55,6 +66,9 @@ void Application::Init()
 	glViewport(0, 0, 800, 600);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	//mGPUPragramManager = new GPUProgramManager();
+	mBufferManager = new BufferManager();
 }
 
 void Application::Update()

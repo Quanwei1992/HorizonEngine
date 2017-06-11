@@ -12,6 +12,6 @@ public:
 	GLenum mode;//GL_TRIANGLES
 	GLsizei count;
 	bool UseIndices;
-	const VertexArray& vertexArray;
+	VertexArray* vertexArray;
 };
 

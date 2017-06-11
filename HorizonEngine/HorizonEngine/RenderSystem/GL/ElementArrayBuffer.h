@@ -1,7 +1,9 @@
 #pragma once
 #include "ThirdPart/Includes/GL/glew.h"
+class BufferManager;
 class ElementArrayBuffer
 {
+	friend BufferManager;
 public:
 	void Bind();
 	void Unbind();

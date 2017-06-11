@@ -5,7 +5,6 @@ class VertexArray;
 class ArrayBuffer;
 class ElementArrayBuffer;
 
-
 class BufferManager
 {
 

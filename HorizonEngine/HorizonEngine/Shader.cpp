@@ -6,90 +6,30 @@
 
 using namespace HorizonEngine;
 
-bool Shader::Compile()
+
+void HorizonEngine::Shader::vertexSource(const std::string & source)
 {
-	GLchar const* vertexShaderSource = mVertexShaderSource.c_str();
-	GLuint vertexShader;
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	glCompileShader(vertexShader);
-	GLint sucess;
-	GLchar infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &sucess);
-
-	if (!sucess)
-	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		glDeleteShader(vertexShader);
-		mCompileError = infoLog;
-		return false;
-	}
-
-	GLchar const* fragmentShaderSource = mFragmentShaderSource.c_str();
-	GLuint fragmentShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
-
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &sucess);
-	if (!sucess)
-	{
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-		mCompileError = infoLog;
-		return false;
-	}
-
-	GLuint shaderProgram;
-	shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &sucess);
-	if (!sucess) {
-		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-		mCompileError = infoLog;
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-		return false;
-	}
-
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-
-	mShaderProgram = shaderProgram;
-	mCompiled = true;
-	return true;
+	mVertexShaderSource = source;
 }
 
-std::string Shader::GetCompileError()
+const std::string & HorizonEngine::Shader::vertexSource()
 {
-	return std::string();
+	// TODO: 在此处插入 return 语句
+	return mVertexShaderSource;
 }
 
-void Shader::Use()
+void HorizonEngine::Shader::fragmentSource(const std::string & source)
 {
-	if (!mCompiled)return;
-	glUseProgram(mShaderProgram);
+	mFragmentShaderSource = source;
 }
 
-void Shader::SetSource(std::string vertex, std::string fragment)
+const std::string & HorizonEngine::Shader::fragmentSource()
 {
-	mVertexShaderSource = vertex;
-	mFragmentShaderSource = fragment;
+	// TODO: 在此处插入 return 语句
+	return mFragmentShaderSource;
 }
 
-bool Shader::IsCompiled()
-{
-	return mCompiled;
-}
-
-Shader::Shader():
-	mCompiled(false)
+Shader::Shader()
 {
 
 }

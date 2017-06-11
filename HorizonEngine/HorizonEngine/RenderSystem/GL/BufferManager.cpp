@@ -1,5 +1,8 @@
 #include "BufferManager.h"
 
+#include "RenderSystem/GL/VertexArray.h"
+#include "RenderSystem/GL/ElementArrayBuffer.h"
+#include "RenderSystem/GL/ArrayBuffer.h"
 
 
 VertexArray& BufferManager::GenVertexArray()
@@ -9,7 +12,7 @@ VertexArray& BufferManager::GenVertexArray()
 
 void BufferManager::DeleteVertexArray(VertexArray& vao)
 {
-	delete *vao;
+	delete &vao;
 }
 
 ArrayBuffer& BufferManager::GenArrayBuffer()

@@ -75,6 +75,12 @@
     <ClCompile Include="RenderSystem\GL\BufferManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="RenderSystem\GL\GPUPragram.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\GL\GPUProgramManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -132,6 +138,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\GL\BufferManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\GPUPragram.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\GL\GPUProgramManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

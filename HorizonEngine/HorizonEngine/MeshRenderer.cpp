@@ -31,9 +31,6 @@ void HorizonEngine::MeshRenderer::Start()
 		1, 2, 3  // 第二个三角形
 	};
 	mMesh = new Mesh();
-	mMesh->SetData(vertices, indices);
-	mMesh->Submit();
-
 	mShader = new Shader();
 
 	GLchar const* vertexShaderSource = " \
@@ -53,28 +50,28 @@ void HorizonEngine::MeshRenderer::Start()
 		}\n";
 
 
-	mShader->SetSource(vertexShaderSource, fragmentShaderSource);
-	if (!mShader->Compile())
-	{
-		std::cout << "ERROR::SHADER\n" << mShader->GetCompileError() << std::endl;
-	}
+	//mShader->SetSource(vertexShaderSource, fragmentShaderSource);
+	//if (!mShader->Compile())
+	//{
+	//	std::cout << "ERROR::SHADER\n" << mShader->GetCompileError() << std::endl;
+	//}
 
 	
 }
 
 void HorizonEngine::MeshRenderer::OnPostRender()
 {
-	if (!mMesh->IsSubmited() || !mShader->IsCompiled())return;
-	mShader->Use();
-	mMesh->Use();
-	if (mMesh->GetIndicesCount()>0)
-	{
-		glDrawElements(GL_TRIANGLES, mMesh->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
-	}
-	else
-	{
-		glDrawArrays(GL_TRIANGLES, 0, mMesh->GetVerticesCount());
-	}
+	//if (!mMesh->IsSubmited() || !mShader->IsCompiled())return;
+	//mShader->Use();
+	//mMesh->Use();
+	//if (mMesh->GetIndicesCount()>0)
+	//{
+	//	glDrawElements(GL_TRIANGLES, mMesh->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
+	//}
+	//else
+	//{
+	//	glDrawArrays(GL_TRIANGLES, 0, mMesh->GetVerticesCount());
+	//}
 	
 }
 

@@ -2,6 +2,8 @@
 #include <Scene.h>
 #include "RenderSystem/Renderable.h"
 #include "Camera.h"
+#include "RenderSystem/GL/BufferManager.h"
+#include "RenderSystem/GL/GPUProgramManager.h"
 // GLEW
 #define GLEW_STATIC
 #include <ThirdPart/Includes/GL/glew.h>
@@ -16,6 +18,16 @@ namespace HorizonEngine
 		void Run(Scene& scene);
 		void PostRenderable(Renderable& renderable);
 
+		BufferManager& bufferManager();
+		//GPUProgramManager& GPUProgramManager();
+
+	public:
+		static Application& getSingleton()
+		{
+			static Application theSingleton;
+			return theSingleton;
+		}
+
 	private:
 		void Init();
 		void Update();
@@ -28,12 +40,10 @@ namespace HorizonEngine
 		GLFWwindow* mWindow;
 		double lastFrame = 0.0f;
 		std::vector<Renderable*> mRenderQueue;
-	public:
-		static Application& getSingleton()
-		{
-			static Application theSingleton;
-			return theSingleton;
-		}
+	private:
+		BufferManager* mBufferManager;
+		//GPUProgramManager* mGPUPragramManager;
+		
 	};
 	
 }

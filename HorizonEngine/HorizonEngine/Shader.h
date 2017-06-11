@@ -6,11 +6,11 @@ namespace HorizonEngine
 	class Shader
 	{
 	public:
-		bool Compile();
-		std::string GetCompileError();
-		void Use();
-		void SetSource(std::string vertex, std::string fragment);
-		bool IsCompiled();
+		void vertexSource(const std::string& source);
+		const std::string& vertexSource();
+		void fragmentSource(const std::string& source);
+		const std::string& fragmentSource();
+
 	public:
 		Shader();
 		~Shader();
@@ -18,9 +18,6 @@ namespace HorizonEngine
 	private:
 		std::string mVertexShaderSource;
 		std::string mFragmentShaderSource;
-		std::string mCompileError;
-		unsigned int mShaderProgram;
-		bool mCompiled;
 	};
 
 }
