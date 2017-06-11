@@ -7,7 +7,7 @@ class ArrayBuffer
 public:
 	void Bind();
 	void Unbind();
-
+	void Write(GLsizeiptr size,const void* data,GLenum usage);
 
 	private:
 	ArrayBuffer();

@@ -59,7 +59,7 @@ void HorizonEngine::MeshRenderer::Start()
 		std::cout << "ERROR::SHADER\n" << mShader->GetCompileError() << std::endl;
 	}
 
-
+	
 }
 
 void HorizonEngine::MeshRenderer::OnPostRender()

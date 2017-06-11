@@ -4,10 +4,13 @@ class ElementArrayBuffer
 {
 public:
 	void Bind();
-	void UnBind();
+	void Unbind();
+	void Write(GLsizeiptr size, const void* data, GLenum usage);
 
 private:
 	ElementArrayBuffer();
 	~ElementArrayBuffer();
+private:
+	GLuint mID;
 };
 
