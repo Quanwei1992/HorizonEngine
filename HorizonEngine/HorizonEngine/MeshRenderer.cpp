@@ -1,3 +1,4 @@
+#include "Application.h"
 #include "MeshRenderer.h"
 #include <GL/glew.h>
 #include <iostream>
@@ -6,8 +7,9 @@
 using namespace HorizonEngine;
 
 MeshRenderer::MeshRenderer():
-	mShader(nullptr),
-	mMesh(nullptr)
+	mMat(nullptr),
+	mMesh(nullptr),
+	mRenderable(nullptr)
 {
 
 }
@@ -15,6 +17,16 @@ MeshRenderer::MeshRenderer():
 
 MeshRenderer::~MeshRenderer()
 = default;
+
+void HorizonEngine::MeshRenderer::material(Material & material)
+{
+	mMat = &material;
+}
+
+void HorizonEngine::MeshRenderer::mesh(Mesh & mesh)
+{
+	mMesh = &mesh;
+}
 
 void HorizonEngine::MeshRenderer::Start()
 {
@@ -30,8 +42,6 @@ void HorizonEngine::MeshRenderer::Start()
 		0, 1, 3, // 第一个三角形
 		1, 2, 3  // 第二个三角形
 	};
-	mMesh = new Mesh();
-	mShader = new Shader();
 
 	GLchar const* vertexShaderSource = " \
 		#version 330 core\n \
@@ -49,35 +59,21 @@ void HorizonEngine::MeshRenderer::Start()
 			color = vec4(1.0f,0.5f,0.2f,1.0f);\n \
 		}\n";
 
-
-	//mShader->SetSource(vertexShaderSource, fragmentShaderSource);
-	//if (!mShader->Compile())
-	//{
-	//	std::cout << "ERROR::SHADER\n" << mShader->GetCompileError() << std::endl;
-	//}
-
-	
 }
 
 void HorizonEngine::MeshRenderer::OnPostRender()
 {
-	//if (!mMesh->IsSubmited() || !mShader->IsCompiled())return;
-	//mShader->Use();
-	//mMesh->Use();
-	//if (mMesh->GetIndicesCount()>0)
-	//{
-	//	glDrawElements(GL_TRIANGLES, mMesh->GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
-	//}
-	//else
-	//{
-	//	glDrawArrays(GL_TRIANGLES, 0, mMesh->GetVerticesCount());
-	//}
-	
+	if (mRenderable==nullptr)
+	{
+
+	}
+
+	Application::getSingleton().PostRenderable(*mRenderable);
+	return;
 }
 
 void HorizonEngine::MeshRenderer::OnDestory()
 {
 
-	delete mShader;
-	delete mMesh;
+
 }

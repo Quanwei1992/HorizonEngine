@@ -4,8 +4,8 @@ class GPUPragram;
 class GPUProgramManager
 {
 public:
-	//GPUPragram& CreateProgram();
-	//void DeleteProgram(GPUPragram& pragram);
+	GPUPragram& CreateProgram();
+	void DeleteProgram(GPUPragram& pragram);
 
 public:
 	GPUProgramManager();

@@ -1,11 +1,21 @@
 #include "Material.h"
 
+using namespace HorizonEngine;
 
-
-Material::Material()
+Shader & Material::shader()
 {
+	return *mShader;
 }
 
+void Material::shader(Shader & shader)
+{
+	mShader = &shader;
+}
+
+HorizonEngine::Material::Material(Shader & shader)
+{
+	mShader = &shader;
+}
 
 Material::~Material()
 {

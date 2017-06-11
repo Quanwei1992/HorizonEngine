@@ -30,10 +30,11 @@ BufferManager & HorizonEngine::Application::bufferManager()
 	return *mBufferManager;
 }
 
-//GPUProgramManager & HorizonEngine::Application::GPUProgramManager()
-//{
-//	//return *mGPUPragramManager;
-//}
+GPUProgramManager & HorizonEngine::Application::gpuProgramManager()
+{
+	return *mGPUPragramManager;
+}
+
 
 Application::Application()
 {
@@ -67,7 +68,7 @@ void Application::Init()
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	//mGPUPragramManager = new GPUProgramManager();
+	mGPUPragramManager = new GPUProgramManager();
 	mBufferManager = new BufferManager();
 }
 

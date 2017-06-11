@@ -2,9 +2,10 @@
 #include <string.h>
 #include <vector>
 #include "ThirdPart/Includes/GL/glew.h"
+class GPUProgramManager;
 class GPUPragram
 {
-//friend GPUProgramManager;
+friend GPUProgramManager;
 public:
 	void Attach(GLenum type,const GLchar* const* source);
 	void Link();

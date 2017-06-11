@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "Shader.h"
+#include "Material.h"
 #include "Mesh.h"
 namespace HorizonEngine
 {
@@ -9,13 +9,16 @@ namespace HorizonEngine
 	public:
 		MeshRenderer();
 		~MeshRenderer();
+		void material(Material& material);
+		void mesh(Mesh& mesh);
 	public:
 		virtual void Start() override;
 		virtual void OnPostRender() override;
 		virtual void OnDestory() override;
 	private:
-		Mesh* mMesh;
-		Shader* mShader;
+		Material* mMat;
+		Mesh*     mMesh;
+		Renderable* mRenderable;
 	};
 
 }

@@ -1,13 +1,20 @@
 #pragma once
 #include "Shader.h"
-class Material
+namespace HorizonEngine
 {
+	class Material
+	{
 
+	public:
+		Shader& shader();
+		void	shader(Shader& shader);
 
-public:
-	Material();
-	~Material();
-private:
-	//Shader* mShader;
-};
+	public:
+		Material(Shader& shader);
+		~Material();
+	private:
+		Shader* mShader;
+	};
+
+}
 
