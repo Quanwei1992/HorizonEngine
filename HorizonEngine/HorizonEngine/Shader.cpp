@@ -12,7 +12,7 @@ void HorizonEngine::Shader::vertexSource(const std::string & source)
 	mVertexShaderSource = source;
 }
 
-const std::string & HorizonEngine::Shader::vertexSource()
+const std::string & HorizonEngine::Shader::vertexSource() const
 {
 	// TODO: 在此处插入 return 语句
 	return mVertexShaderSource;
@@ -23,7 +23,7 @@ void HorizonEngine::Shader::fragmentSource(const std::string & source)
 	mFragmentShaderSource = source;
 }
 
-const std::string & HorizonEngine::Shader::fragmentSource()
+const std::string & HorizonEngine::Shader::fragmentSource() const
 {
 	// TODO: 在此处插入 return 语句
 	return mFragmentShaderSource;

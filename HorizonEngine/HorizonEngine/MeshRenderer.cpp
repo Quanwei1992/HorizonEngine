@@ -2,6 +2,12 @@
 #include "MeshRenderer.h"
 #include <GL/glew.h>
 #include <iostream>
+#include "RenderSystem/GL/VertexArray.h"
+#include "RenderSystem/GL/ArrayBuffer.h"
+#include "RenderSystem/GL/ElementArrayBuffer.h"
+#include "RenderSystem/GL/GPUPragram.h"
+#include "RenderSystem/GL/GPUProgramManager.h"
+
 // GLFW
 #include <GLFW/glfw3.h>
 using namespace HorizonEngine;
@@ -31,41 +37,46 @@ void HorizonEngine::MeshRenderer::mesh(Mesh & mesh)
 void HorizonEngine::MeshRenderer::Start()
 {
 
-
-	std::vector<float> vertices = {
-		0.5f, 0.5f, 0.0f,   // 右上角
-		0.5f, -0.5f, 0.0f,  // 右下角
-		-0.5f, -0.5f, 0.0f, // 左下角
-		-0.5f, 0.5f, 0.0f   // 左上角
-	};
-	std::vector<unsigned int>indices = {
-		0, 1, 3, // 第一个三角形
-		1, 2, 3  // 第二个三角形
-	};
-
-	GLchar const* vertexShaderSource = " \
-		#version 330 core\n \
-		layout (location = 0) in vec3 position;\n \
-		void main()\n \
-		{\n \
-			gl_Position = vec4(position.x,position.y,position.z,1.0);\n \
-		}\n";
-
-	GLchar const* fragmentShaderSource = "\
-		#version 330 core\n \
-		out vec4 color;\n \
-		void main()\n \
-		{\n \
-			color = vec4(1.0f,0.5f,0.2f,1.0f);\n \
-		}\n";
-
 }
 
 void HorizonEngine::MeshRenderer::OnPostRender()
 {
+	if (mMesh == nullptr || mMat == nullptr)return;
+
 	if (mRenderable==nullptr)
 	{
+		// post mesh
+		 BufferManager& buffermanager = Application::getSingleton().bufferManager();
+		 GPUProgramManager& gpuProgramManager = Application::getSingleton().gpuProgramManager();
+		 VertexArray& vao = buffermanager.GenVertexArray();
+		 ArrayBuffer& vbo = buffermanager.GenArrayBuffer();
+		 ElementArrayBuffer& ebo = buffermanager.GenElementArrayBuffer();
+		 vbo.Write(mMesh->vertices().size() * sizeof(float), &mMesh->vertices()[0], GL_STATIC_DRAW);
+		 ebo.Write(mMesh->indices().size() * sizeof(unsigned int), &mMesh->indices()[0], GL_STATIC_DRAW);
+		 vao.AttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+		 vao.Bind();
+		 vbo.Bind();
+		 ebo.Bind();
+		 vao.Unbind();
+		 ebo.Unbind();
+		 vbo.Unbind();
 
+		 RenderOperation* op = new RenderOperation();
+		 op->vertexArray = &vao;
+		 op->UseIndices = true;
+		 op->count = mMesh->indices().size();
+		 op->mode = GL_TRIANGLES;
+
+
+		 GPUPragram& program = gpuProgramManager.CreateProgram();
+		 GLchar const* vertx_source = mMat->shader().vertexSource().c_str();
+		 GLchar const* frament_source = mMat->shader().fragmentSource().c_str();
+		 program.Attach(GL_VERTEX_SHADER,&vertx_source);
+		 program.Attach(GL_FRAGMENT_SHADER, &frament_source);
+		 program.Link();
+		 
+		 glm::mat4x4 mat = this->getOnwer().transform().worldMatrix() *  this->getOnwer().transform().localMatrix();
+		 mRenderable = new Renderable(*op,program,mat);
 	}
 
 	Application::getSingleton().PostRenderable(*mRenderable);

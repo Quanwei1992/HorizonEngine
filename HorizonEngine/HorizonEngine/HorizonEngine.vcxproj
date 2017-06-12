@@ -142,6 +142,7 @@
     <ClCompile Include="RenderSystem\Renderable.cpp" />
     <ClCompile Include="RenderSystem\RenderOperation.cpp" />
     <ClCompile Include="RenderSystem\RenderSystem.cpp" />
+    <ClCompile Include="Resource\ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="RenderSystem\Renderable.h" />
     <ClInclude Include="RenderSystem\RenderOperation.h" />
     <ClInclude Include="RenderSystem\RenderSystem.h" />
+    <ClInclude Include="Resource\ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Transform.h" />

@@ -5,7 +5,7 @@ class Mesh
 
 public:
 	void vertices(const std::vector<float> vertices);
-	const std::vector<float>& vectices();
+	const std::vector<float>& vertices();
 	void indices(const std::vector<unsigned int> indices);
 	const std::vector<unsigned int>& indices();
 public:

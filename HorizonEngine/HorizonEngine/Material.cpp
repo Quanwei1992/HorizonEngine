@@ -2,17 +2,17 @@
 
 using namespace HorizonEngine;
 
-Shader & Material::shader()
+const Shader & Material::shader() const
 {
 	return *mShader;
 }
 
-void Material::shader(Shader & shader)
+void Material::shader(const Shader & shader)
 {
 	mShader = &shader;
 }
 
-HorizonEngine::Material::Material(Shader & shader)
+Material::Material(const Shader & shader)
 {
 	mShader = &shader;
 }

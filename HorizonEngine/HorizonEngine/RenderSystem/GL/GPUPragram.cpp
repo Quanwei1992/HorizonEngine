@@ -20,12 +20,12 @@ void GPUPragram::Link()
 	mShaderSources.clear();
 }
 
-void GPUPragram::Bind()
+void GPUPragram::Bind() const
 {
 	glUseProgram(mID);
 }
 
-void GPUPragram::Unbind()
+void GPUPragram::Unbind() const
 {
 	glUseProgram(0);
 }

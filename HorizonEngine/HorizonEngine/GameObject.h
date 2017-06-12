@@ -10,7 +10,7 @@ namespace HorizonEngine
 	{
 
 	public:
-		const Transform & transform() { return mTransform; }
+		Transform & transform() const;
 		template<typename T, typename Requires = std::enable_if_t<std::is_base_of<Component, T>::value>>
 		T& AddComponent();
 		std::vector<Component*>& GetComponents();
@@ -21,7 +21,7 @@ namespace HorizonEngine
 		~GameObject();
 
 	private:
-		Transform mTransform;
+		Transform* mTransform;
 		std::vector<Component*> mComponents;
 		bool mIsStatred;
 
@@ -32,6 +32,7 @@ namespace HorizonEngine
 	{
 		// TODO: 在此处插入 return 语句
 		T* component = new T();
+		component->setOnwer(*this);
 		mComponents.push_back(component);
 		if (mIsStatred)
 		{

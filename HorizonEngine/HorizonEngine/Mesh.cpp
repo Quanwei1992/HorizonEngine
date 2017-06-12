@@ -11,7 +11,7 @@ void Mesh::vertices(const std::vector<float> vertices)
 	mVertices = vertices;
 }
 
-const std::vector<float>& Mesh::vectices()
+const std::vector<float>& Mesh::vertices()
 {
 	return mVertices;
 }

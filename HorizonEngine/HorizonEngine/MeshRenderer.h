@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "Material.h"
 #include "Mesh.h"
+#include "RenderSystem/Renderable.h"
 namespace HorizonEngine
 {
 	class MeshRenderer : public Component

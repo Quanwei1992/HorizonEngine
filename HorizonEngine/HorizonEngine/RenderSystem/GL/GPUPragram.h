@@ -9,8 +9,8 @@ friend GPUProgramManager;
 public:
 	void Attach(GLenum type,const GLchar* const* source);
 	void Link();
-	void Bind();
-	void Unbind();
+	void Bind() const;
+	void Unbind() const;
 private:
 	GPUPragram();
 	~GPUPragram();

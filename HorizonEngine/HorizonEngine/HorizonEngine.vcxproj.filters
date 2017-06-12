@@ -81,6 +81,9 @@
     <ClCompile Include="RenderSystem\GL\GPUProgramManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\ResourceManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -144,6 +147,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\GL\GPUProgramManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

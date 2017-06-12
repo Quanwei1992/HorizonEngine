@@ -4,13 +4,18 @@ using namespace HorizonEngine;
 
 
 
+vec3 HorizonEngine::Transform::localPosition() const
+{
+	return mLocalPosition;
+}
+
 void HorizonEngine::Transform::localPosition(vec3 position)
 {
 	mLocalPosition = position;
 	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
 }
 
-vec3 HorizonEngine::Transform::localRotation()
+vec3 HorizonEngine::Transform::localRotation() const
 {
 	return mLocalRotation;
 }
@@ -21,7 +26,7 @@ void HorizonEngine::Transform::localRotation(vec3 rotation)
 	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
 }
 
-vec3 HorizonEngine::Transform::localScale()
+vec3 HorizonEngine::Transform::localScale() const
 {
 	return mLocalScale;
 }
@@ -32,7 +37,7 @@ void HorizonEngine::Transform::localScale(vec3 scale)
 	mLocalMat = Combine(mLocalPosition, mLocalRotation, mLocalScale);
 }
 
-mat4x4 HorizonEngine::Transform::localMatrix()
+mat4x4 HorizonEngine::Transform::localMatrix() const
 {
 	return mLocalMat;
 }
@@ -44,7 +49,7 @@ vec3 Transform::worldPosition()
 	return vec3(world.x,world.y,world.z);
 }
 
-mat4x4 HorizonEngine::Transform::worldMatrix()
+mat4x4 HorizonEngine::Transform::worldMatrix() const
 {
 	if (mParent != nullptr)
 	{

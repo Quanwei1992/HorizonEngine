@@ -11,15 +11,3 @@ public:
 private:
 
 };
-
-RenderSystem::RenderSystem()
-{
-}
-
-RenderSystem::~RenderSystem()
-{
-}
-
-inline void RenderSystem::Render(const RenderOperation & op)
-{
-}

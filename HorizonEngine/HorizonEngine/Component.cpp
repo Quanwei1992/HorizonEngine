@@ -2,15 +2,22 @@
 using namespace HorizonEngine;
 
 
-Component::Component()
+Component::Component():
+	mOnwer(nullptr)
+{
+}
+Component::~Component()
 {
 }
 
-//Component::Component(GameObject& onwer)
-//{
-//	this->mOnwer = &onwer;
-//}
 
-Component::~Component()
+
+const GameObject & HorizonEngine::Component::getOnwer() const
 {
+	return *mOnwer;
+}
+
+void HorizonEngine::Component::setOnwer(const GameObject & onwer)
+{
+	mOnwer = &onwer;
 }

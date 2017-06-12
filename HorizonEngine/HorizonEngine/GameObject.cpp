@@ -3,6 +3,11 @@ using namespace HorizonEngine;
 
 
 
+Transform & HorizonEngine::GameObject::transform() const
+{
+	return *mTransform;
+}
+
 std::vector<Component*>& HorizonEngine::GameObject::GetComponents()
 {
 	// TODO: 在此处插入 return 语句
@@ -28,9 +33,10 @@ void HorizonEngine::GameObject::Destory()
 
 
 GameObject::GameObject():
-	mIsStatred(false)
+	mIsStatred(false),
+	mTransform(nullptr)
 {
-	mComponents.push_back(&mTransform);
+	mTransform = &AddComponent<Transform>();
 }
 
 

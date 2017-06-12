@@ -6,14 +6,14 @@ namespace HorizonEngine
 	{
 
 	public:
-		Shader& shader();
-		void	shader(Shader& shader);
+		const Shader& shader() const;
+		void	shader(const Shader& shader);
 
 	public:
-		Material(Shader& shader);
+		Material(const Shader& shader);
 		~Material();
 	private:
-		Shader* mShader;
+		const Shader* mShader;
 	};
 
 }

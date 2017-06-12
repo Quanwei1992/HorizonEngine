@@ -35,6 +35,11 @@ GPUProgramManager & HorizonEngine::Application::gpuProgramManager()
 	return *mGPUPragramManager;
 }
 
+ResourceManager & HorizonEngine::Application::resourceManager()
+{
+	return *mResourceManager;
+}
+
 
 Application::Application()
 {
@@ -70,6 +75,7 @@ void Application::Init()
 
 	mGPUPragramManager = new GPUProgramManager();
 	mBufferManager = new BufferManager();
+	mResourceManager = new ResourceManager();
 }
 
 void Application::Update()
@@ -85,6 +91,16 @@ void Application::Update()
 
 void Application::Render(const Camera & camera)
 {
+	
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	for (auto renderable : mRenderQueue)
+	{
+		renderable->program->Bind();
+
+	}
+
 	//清理framebuffer.
 	//设置view矩阵
 	//设置projection矩阵。
@@ -121,6 +137,7 @@ void Application::RenderOneFrame()
 	{
 		Render(*camera);
 	}
+	glfwSwapBuffers(mWindow);
 	// clear render queue.
 	mRenderQueue.clear();
 }

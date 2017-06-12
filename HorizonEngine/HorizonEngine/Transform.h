@@ -6,23 +6,24 @@
 using namespace glm;
 namespace HorizonEngine
 {
+	class GameObject;
 	class Transform : public Component
 	{
 
 	public:
-		vec3	localPosition();
+		vec3	localPosition() const;
 		void	localPosition(vec3 position);
 
-		vec3	localRotation();
+		vec3	localRotation() const;
 		void	localRotation(vec3 rotation);
 
-		vec3	localScale();
+		vec3	localScale() const;
 		void	localScale(vec3 scale);
 
-		mat4x4 localMatrix();
+		mat4x4 localMatrix() const;
 
 		vec3 worldPosition();
-		mat4x4 worldMatrix();
+		mat4x4 worldMatrix() const;
 
 		void parent(Transform& parent);
 		Transform* parent() { return mParent; }

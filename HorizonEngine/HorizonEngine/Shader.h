@@ -7,9 +7,9 @@ namespace HorizonEngine
 	{
 	public:
 		void vertexSource(const std::string& source);
-		const std::string& vertexSource();
+		const std::string& vertexSource() const;
 		void fragmentSource(const std::string& source);
-		const std::string& fragmentSource();
+		const std::string& fragmentSource() const;
 
 	public:
 		Shader();

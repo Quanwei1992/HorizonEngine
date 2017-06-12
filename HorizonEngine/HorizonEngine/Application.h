@@ -6,6 +6,7 @@
 #include "RenderSystem/Renderable.h"
 #include "RenderSystem/GL/BufferManager.h"
 #include "RenderSystem/GL/GPUProgramManager.h"
+#include "Resource/ResourceManager.h"
 
 namespace HorizonEngine
 {
@@ -17,11 +18,12 @@ namespace HorizonEngine
 
 		BufferManager& bufferManager();
 		GPUProgramManager& gpuProgramManager();
-
+		ResourceManager& resourceManager();
 
 	private:
 		BufferManager* mBufferManager;
 		GPUProgramManager* mGPUPragramManager;
+		ResourceManager* mResourceManager;
 	private:
 		void Init();
 		void Update();
