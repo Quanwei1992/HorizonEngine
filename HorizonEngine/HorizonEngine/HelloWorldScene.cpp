@@ -12,7 +12,7 @@ void HelloWorldScene::Start()
 	auto camera = go.AddComponent<Camera>();
 	auto& cam_trans = camera.getOnwer().transform();
 	cam_trans.localPosition(glm::vec3(0, 0, 10));
-	cam_trans.localRotation(glm::vec3(0, 0, 30));
+	cam_trans.localRotation(glm::vec3(0, 0, 0));
 	const Shader& sampleShader = Application::getSingleton().resourceManager().LoadShader("sample");
 	Material* mat = new Material(sampleShader);
 
@@ -37,6 +37,12 @@ void HelloWorldScene::Start()
 	meshRender.mesh(*mesh);
 	quad.transform().localRotation(glm::vec3(0,0,30));
 
+	auto& quad2 = this->CreateGameObject();
+	MeshRenderer& meshRender2 = quad2.AddComponent<MeshRenderer>();
+	meshRender2.material(*mat);
+	meshRender2.mesh(*mesh);
+	quad2.transform().localRotation(glm::vec3(0, 0, 0));
+	quad2.transform().localPosition(glm::vec3(2,0,0));
 
 	Scene::Start();
 }
