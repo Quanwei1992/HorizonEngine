@@ -153,4 +153,8 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\sample.vs" />
+    <None Include="Assets\Resources\sample.frag" />
+  </ItemGroup>
 </Project>

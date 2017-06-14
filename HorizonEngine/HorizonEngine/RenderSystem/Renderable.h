@@ -14,7 +14,6 @@ class Renderable
 public:
 	Renderable(const RenderOperation& _op,const GPUPragram& _program,const glm::mat4x4 _model2world);
 	~Renderable();
-
 public:
 	const RenderOperation* op;
 	const GPUPragram* program;

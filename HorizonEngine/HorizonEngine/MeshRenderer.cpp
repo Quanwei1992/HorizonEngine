@@ -49,18 +49,19 @@ void HorizonEngine::MeshRenderer::OnPostRender()
 		 BufferManager& buffermanager = Application::getSingleton().bufferManager();
 		 GPUProgramManager& gpuProgramManager = Application::getSingleton().gpuProgramManager();
 		 VertexArray& vao = buffermanager.GenVertexArray();
+		 vao.Bind();
 		 ArrayBuffer& vbo = buffermanager.GenArrayBuffer();
 		 ElementArrayBuffer& ebo = buffermanager.GenElementArrayBuffer();
-		 vbo.Write(mMesh->vertices().size() * sizeof(float), &mMesh->vertices()[0], GL_STATIC_DRAW);
+		 vbo.Write(mMesh->vertices().size() * sizeof(float), &mMesh->vertices()[0], GL_STATIC_DRAW);;
 		 ebo.Write(mMesh->indices().size() * sizeof(unsigned int), &mMesh->indices()[0], GL_STATIC_DRAW);
 		 vao.AttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-		 vao.Bind();
-		 vbo.Bind();
-		 ebo.Bind();
-		 vao.Unbind();
-		 ebo.Unbind();
-		 vbo.Unbind();
+		 vao.EnableAttribArray(0);
 
+
+
+
+
+		 vao.Unbind();
 		 RenderOperation* op = new RenderOperation();
 		 op->vertexArray = &vao;
 		 op->UseIndices = true;

@@ -16,14 +16,13 @@ void VertexArray::AttribPointer(GLuint index, GLint size, GLenum type, GLboolean
 {
 	Bind();
 	glVertexAttribPointer(index,size,type,normalized, stride, pointer);
-	Unbind();
+	EnableAttribArray(index);
 }
 
 void VertexArray::EnableAttribArray(GLuint index)
 {
 	Bind();
 	glEnableVertexAttribArray(index);
-	Unbind();
 }
 
 VertexArray::VertexArray()

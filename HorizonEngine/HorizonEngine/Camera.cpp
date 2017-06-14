@@ -26,9 +26,9 @@ glm::mat4 HorizonEngine::Camera::viewMatrix() const
 HorizonEngine::Camera::Camera()
 {
 	fov = 45.0f;
-	aspect = 1.7f;
+	aspect =800.0f/600.0f;
 	near = 0.1f;
-	far = 1000.0f;
+	far = 100.0f;
 }
 
 Camera::~Camera()

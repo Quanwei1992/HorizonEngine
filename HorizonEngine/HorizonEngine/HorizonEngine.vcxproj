@@ -172,6 +172,10 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="RenderSystem\GL\VertexArray.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\sample.frag" />
+    <None Include="Assets\Resources\sample.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

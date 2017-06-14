@@ -16,7 +16,6 @@ void ElementArrayBuffer::Write(GLsizeiptr size, const void * data, GLenum usage)
 {
 	Bind();
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, usage);
-	Unbind();
 }
 
 ElementArrayBuffer::ElementArrayBuffer()

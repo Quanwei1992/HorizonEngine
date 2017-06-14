@@ -1,7 +1,8 @@
 #include "Application.h"
 #include "Camera.h"
 #include <vector>
-
+#include "ThirdPart/Includes/glm/glm.hpp"
+#include "ThirdPart/Includes/glm/gtc/matrix_transform.hpp"
 
 using namespace HorizonEngine;
 
@@ -95,9 +96,32 @@ void Application::Render(const Camera & camera)
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	auto view = camera.viewMatrix();
+
+
+	auto projection = camera.projectionMatrix();
+	//projection = glm::perspective(45.0f, 800.0f / 600.0f, 0.1f, 100.0f);
+	// 注意，我们将矩阵向我们要进行移动场景的反方向移动。
+	//view = glm::mat4x4();
+	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
+	glm::vec4 pos(0,0,11,1.0f);
+	glm::vec4 viewPos = view * pos;
+	glm::vec4 projPos = projection*view*pos;
+
 	for (auto renderable : mRenderQueue)
 	{
+		renderable->op->vertexArray->Bind();
 		renderable->program->Bind();
+		renderable->program->Uniform("view",view);
+		renderable->program->Uniform("projection", projection);
+		renderable->program->Uniform("model", renderable->model2world);
+		if (renderable->op->UseIndices)
+		{
+			glDrawElements(GL_TRIANGLES, renderable->op->count, GL_UNSIGNED_INT, 0);
+		}
+
+
+		renderable->op->vertexArray->Unbind();
 
 	}
 
