@@ -51,21 +51,29 @@ void HorizonEngine::MeshRenderer::OnPostRender()
 		 VertexArray& vao = buffermanager.GenVertexArray();
 		 vao.Bind();
 		 ArrayBuffer& vbo = buffermanager.GenArrayBuffer();
-		 ElementArrayBuffer& ebo = buffermanager.GenElementArrayBuffer();
+		 if (!mMesh->indices().empty())
+		 {
+			 ElementArrayBuffer& ebo = buffermanager.GenElementArrayBuffer();
+			 ebo.Write(mMesh->indices().size() * sizeof(unsigned int), &mMesh->indices()[0], GL_STATIC_DRAW);
+		 }	
 		 vbo.Write(mMesh->vertices().size() * sizeof(float), &mMesh->vertices()[0], GL_STATIC_DRAW);;
-		 ebo.Write(mMesh->indices().size() * sizeof(unsigned int), &mMesh->indices()[0], GL_STATIC_DRAW);
+		 vbo.Bind();
 		 vao.AttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 		 vao.EnableAttribArray(0);
-
-
-
-
 
 		 vao.Unbind();
 		 RenderOperation* op = new RenderOperation();
 		 op->vertexArray = &vao;
-		 op->UseIndices = true;
-		 op->count = mMesh->indices().size();
+		 op->UseIndices = !mMesh->indices().empty();
+		 if (op->UseIndices)
+		 {
+			 op->count = mMesh->indices().size();
+		 }
+		 else
+		 {
+			 op->count = mMesh->vertices().size();
+		 }
+		 
 		 op->mode = GL_TRIANGLES;
 
 

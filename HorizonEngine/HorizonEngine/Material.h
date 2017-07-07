@@ -6,8 +6,10 @@ namespace HorizonEngine
 	{
 
 	public:
-		const Shader& shader() const;
-		void	shader(const Shader& shader);
+		const Shader& 
+			shader() const;
+		void 
+			shader(const Shader& shader);
 
 	public:
 		Material(const Shader& shader);

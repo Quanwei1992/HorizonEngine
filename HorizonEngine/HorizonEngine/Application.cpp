@@ -117,7 +117,11 @@ void Application::Render(const Camera & camera)
 		renderable->program->Uniform("model", renderable->model2world);
 		if (renderable->op->UseIndices)
 		{
-			glDrawElements(GL_TRIANGLES, renderable->op->count, GL_UNSIGNED_INT, 0);
+			glDrawElements(renderable->op->mode, renderable->op->count, GL_UNSIGNED_INT, 0);
+		}
+		else
+		{
+			glDrawArrays(renderable->op->mode, 0, renderable->op->count);
 		}
 
 

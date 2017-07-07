@@ -18,18 +18,49 @@ void HelloWorldScene::Start()
 
 	Mesh* mesh = new Mesh();
 	std::vector<float> vertices = {
-		-0.5f, -0.5f, 0.0f,   // 右上角
-		0.5f, 0.5f, 0.0f,  // 右下角
-		0.5f, -0.5f, 0.0f, // 左下角
-		-0.5f, 0.5f, 0.0f   // 左上角
-	};
-	std::vector<unsigned int>indices = {
-		0, 1,2, // 第一个三角形
-		1, 0,3  // 第二个三角形
+		-0.5f, -0.5f, -0.5f, 
+		0.5f, -0.5f, -0.5f,  
+		0.5f,  0.5f, -0.5f,  
+		0.5f,  0.5f, -0.5f,  
+		-0.5f,  0.5f, -0.5f, 
+		-0.5f, -0.5f, -0.5f, 
+
+		-0.5f, -0.5f,  0.5f, 
+		0.5f, -0.5f,  0.5f,  
+		0.5f,  0.5f,  0.5f,  
+		0.5f,  0.5f,  0.5f,  
+		-0.5f,  0.5f,  0.5f, 
+		-0.5f, -0.5f,  0.5f, 
+
+		-0.5f,  0.5f,  0.5f, 
+		-0.5f,  0.5f, -0.5f, 
+		-0.5f, -0.5f, -0.5f, 
+		-0.5f, -0.5f, -0.5f, 
+		-0.5f, -0.5f,  0.5f, 
+		-0.5f,  0.5f,  0.5f, 
+
+		0.5f,  0.5f,  0.5f,  
+		0.5f,  0.5f, -0.5f,  
+		0.5f, -0.5f, -0.5f,  
+		0.5f, -0.5f, -0.5f,  
+		0.5f, -0.5f,  0.5f,  
+		0.5f,  0.5f,  0.5f,  
+
+		-0.5f, -0.5f, -0.5f, 
+		0.5f, -0.5f, -0.5f,  
+		0.5f, -0.5f,  0.5f,  
+		0.5f, -0.5f,  0.5f,  
+		-0.5f, -0.5f,  0.5f, 
+		-0.5f, -0.5f, -0.5f, 
+
+		-0.5f,  0.5f, -0.5f, 
+		0.5f,  0.5f, -0.5f,  
+		0.5f,  0.5f,  0.5f,  
+		0.5f,  0.5f,  0.5f,  
+		-0.5f,  0.5f,  0.5f, 
+		-0.5f,  0.5f, -0.5f,
 	};
 	mesh->vertices(vertices);
-	mesh->indices(indices);
-
 
 	auto& quad = this->CreateGameObject();
 	MeshRenderer& meshRender = quad.AddComponent<MeshRenderer>();
