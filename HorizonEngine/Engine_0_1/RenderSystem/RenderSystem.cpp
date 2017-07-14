@@ -47,6 +47,17 @@ void RenderSystem::setViewport(int x, int y, int width, int height)
 
 void RenderSystem::setViewMatrix(glm::mat4x4 viewMat)
 {
+
+}
+
+void RenderSystem::setProjectionMatrix(glm::mat4x4 viewMat)
+{
+
+}
+
+void RenderSystem::render(const RenderOperation & op)
+{
+
 }
 
 std::shared_ptr<RenderWindow> HorizonEngine::RenderSystem::createRenderWindow(unsigned int width, unsigned int height, std::string title)

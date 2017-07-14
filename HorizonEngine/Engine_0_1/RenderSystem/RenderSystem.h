@@ -10,6 +10,7 @@
 // engine
 #include "RenderWindow.h"
 #include "GLStateCacheManager.h"
+#include "RenderOperation.h"
 namespace HorizonEngine
 {
 	class RenderSystem
@@ -29,6 +30,9 @@ namespace HorizonEngine
 
 		// render state
 		void setViewMatrix(glm::mat4x4 viewMat);
+		void setProjectionMatrix(glm::mat4x4 viewMat);
+
+		void render(const RenderOperation& op);
 
 	protected:
 		std::shared_ptr<RenderWindow> createRenderWindow(unsigned int width,unsigned int height,std::string title);

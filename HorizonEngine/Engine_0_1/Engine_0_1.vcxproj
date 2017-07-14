@@ -121,6 +121,13 @@
   <ItemGroup>
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\LogSystem.cpp" />
+    <ClCompile Include="RenderSystem\GLVertexAttrib.cpp" />
+    <ClCompile Include="RenderSystem\GLProgram.cpp" />
+    <ClCompile Include="RenderSystem\GLShader.cpp" />
+    <ClCompile Include="RenderSystem\GLVertexArrayObject.cpp" />
+    <ClCompile Include="RenderSystem\GLBufferManager.cpp" />
+    <ClCompile Include="RenderSystem\GLBuffer.cpp" />
+    <ClCompile Include="RenderSystem\RenderOperation.cpp" />
     <ClCompile Include="RenderSystem\GLStateCacheManager.cpp" />
     <ClCompile Include="RenderSystem\RenderTarget.cpp" />
     <ClCompile Include="stdafx.cpp" />
@@ -131,6 +138,13 @@
   <ItemGroup>
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\LogSystem.h" />
+    <ClInclude Include="RenderSystem\GLVertexAttrib.h" />
+    <ClInclude Include="RenderSystem\GLProgram.h" />
+    <ClInclude Include="RenderSystem\GLShader.h" />
+    <ClInclude Include="RenderSystem\GLVertexArrayObject.h" />
+    <ClInclude Include="RenderSystem\GLBufferManager.h" />
+    <ClInclude Include="RenderSystem\GLBuffer.h" />
+    <ClInclude Include="RenderSystem\RenderOperation.h" />
     <ClInclude Include="RenderSystem\GLStateCacheManager.h" />
     <ClInclude Include="RenderSystem\RenderTarget.h" />
     <ClInclude Include="stdafx.h" />
