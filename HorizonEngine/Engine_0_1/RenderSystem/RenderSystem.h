@@ -32,6 +32,7 @@ public:
 	void setProgram(const GLProgramPtr& program);
 	void setViewMatrix(const Matrix4x4& viewMat);
 	void setProjectionMatrix(const Matrix4x4& projMat);
+	void setModelMatrix(const Matrix4x4& modelMat);
 
 	void render(const RenderOperationPtr& op);
 
@@ -44,4 +45,5 @@ private:
 	GLProgramPtr mProgram;
 	Matrix4x4 mViewMatrix;
 	Matrix4x4 mProjectionMatrix;
+	Matrix4x4 mModelMatrix;
 };

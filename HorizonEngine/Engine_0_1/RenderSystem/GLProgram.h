@@ -10,7 +10,7 @@ class GLProgram
 public:
 	GLProgram();
 	~GLProgram();
-	void attachShader(const GLShader& shader);
+	void attachShader(const GLShaderPtr& shader);
 	void link();
 	bool getLinkStatus();
 	std::string getProgramInfoLog();

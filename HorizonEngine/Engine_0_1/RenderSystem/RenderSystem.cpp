@@ -52,6 +52,11 @@ void RenderSystem::setProjectionMatrix(const Matrix4x4& projMat)
 	mProjectionMatrix = projMat;
 }
 
+void RenderSystem::setModelMatrix(const Matrix4x4 & modelMat)
+{
+	mModelMatrix = mModelMatrix;
+}
+
 void RenderSystem::render(const RenderOperationPtr& op)
 {
 	GLenum type = GL_TRIANGLES;
@@ -82,8 +87,11 @@ void RenderSystem::render(const RenderOperationPtr& op)
 	assert(mProgram);
 
 	glUseProgram(mProgram->getID());
+	mProgram->setValue(mProgram->getUniformID("MATRIX_VIEW"), mViewMatrix);
+	mProgram->setValue(mProgram->getUniformID("MATRIX_PROJ"), mProjectionMatrix);
+	mProgram->setValue(mProgram->getUniformID("MATRIX_MODEL"),mModelMatrix);
 	glBindVertexArray(op->getData()->getVAO()->getID());
-
+	
 	if (op->getData()->UseIndices()) {
 		glDrawElements(type, op->getData()->getIndicesCount(), op->getData()->getIndicesType(), nullptr);
 	}
@@ -91,7 +99,7 @@ void RenderSystem::render(const RenderOperationPtr& op)
 	{
 		glDrawArrays(type, 0, op->getData()->getVertexCount());
 	}
-
+	glBindVertexArray(0);
 }
 
 

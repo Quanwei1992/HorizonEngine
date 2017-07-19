@@ -14,9 +14,9 @@ GLProgram::~GLProgram()
 	glDeleteProgram(mID);
 }
 
-void GLProgram::attachShader(const GLShader & shader)
+void GLProgram::attachShader(const GLShaderPtr & shader)
 {
-	glAttachShader(mID, shader.getID());
+	glAttachShader(mID, shader->getID());
 }
 
 void GLProgram::link()

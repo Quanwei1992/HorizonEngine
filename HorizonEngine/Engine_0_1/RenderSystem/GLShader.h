@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <memory>
 #include "ThirdPart/Includes/GL/glew.h"
 #include "ThirdPart/Includes/GLFW/glfw3.h"
 class GLShader
@@ -17,4 +18,5 @@ private:
 	GLenum mType;
 	std::string mCompileStatus;
 };
+typedef std::shared_ptr<GLShader> GLShaderPtr;
 
