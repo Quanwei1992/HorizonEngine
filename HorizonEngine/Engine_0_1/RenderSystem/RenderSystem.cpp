@@ -1,14 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RenderSystem.h"
 
-using namespace HorizonEngine;
-RenderSystem::RenderSystem()
-{
-}
-
-RenderSystem::~RenderSystem()
-{
-}
 
 void RenderSystem::startUp()
 {
@@ -30,7 +22,7 @@ std::shared_ptr<RenderWindow> RenderSystem::getRenderWindow()
 	return this->mRenderWindow;
 }
 
-void RenderSystem::setRenderTarget(std::shared_ptr<RenderTarget> target)
+void RenderSystem::setRenderTarget(const RenderTargetPtr& target)
 {
 	this->mRenderTarget = target;
 }
@@ -45,22 +37,65 @@ void RenderSystem::setViewport(int x, int y, int width, int height)
 	glViewport(x, y, width, height);
 }
 
-void RenderSystem::setViewMatrix(glm::mat4x4 viewMat)
+void RenderSystem::setProgram(const GLProgramPtr & program)
 {
+	mProgram = program;
+}
+
+void RenderSystem::setViewMatrix(const Matrix4x4& viewMat)
+{
+	mViewMatrix = viewMat;
+}
+
+void RenderSystem::setProjectionMatrix(const Matrix4x4& projMat)
+{
+	mProjectionMatrix = projMat;
+}
+
+void RenderSystem::render(const RenderOperationPtr& op)
+{
+	GLenum type = GL_TRIANGLES;
+	switch (op->getType())
+	{
+	case RenderOperation::OperationType::TriangleList:
+		type = GL_TRIANGLES;
+		break;
+	case RenderOperation::OperationType::TriangleStrip:
+		type = GL_TRIANGLE_STRIP;
+		break;
+	case RenderOperation::OperationType::TriangleFan:
+		type = GL_TRIANGLE_FAN;
+		break;
+	case RenderOperation::OperationType::LineList:
+		type = GL_LINES;
+		break;
+	case RenderOperation::OperationType::LineStrip:
+		type = GL_LINE_STRIP;
+		break;
+	case RenderOperation::OperationType::PointList:
+		type = GL_POINTS;
+		break;
+	default:
+		break;
+	}
+
+	assert(mProgram);
+
+	glUseProgram(mProgram->getID());
+	glBindVertexArray(op->getData()->getVAO()->getID());
+
+	if (op->getData()->UseIndices()) {
+		glDrawElements(type, op->getData()->getIndicesCount(), op->getData()->getIndicesType(), nullptr);
+	}
+	else
+	{
+		glDrawArrays(type, 0, op->getData()->getVertexCount());
+	}
 
 }
 
-void RenderSystem::setProjectionMatrix(glm::mat4x4 viewMat)
-{
 
-}
-
-void RenderSystem::render(const RenderOperation & op)
-{
-
-}
-
-std::shared_ptr<RenderWindow> HorizonEngine::RenderSystem::createRenderWindow(unsigned int width, unsigned int height, std::string title)
+std::shared_ptr<RenderWindow> RenderSystem::createRenderWindow(unsigned int width, unsigned int height, std::string title)
 {
 	RenderWindow* rw = new RenderWindow(width, height, title);
 	return std::shared_ptr<RenderWindow>(rw);

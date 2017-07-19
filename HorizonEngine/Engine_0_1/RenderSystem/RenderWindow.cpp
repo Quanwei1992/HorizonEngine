@@ -1,8 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RenderWindow.h"
 
-using namespace HorizonEngine;
-
 
 RenderWindow::RenderWindow(unsigned int width, unsigned int height, std::string title):
 	mGLWindow(nullptr)
@@ -43,7 +41,7 @@ bool RenderWindow::shouldClose()
 	return false;
 }
 
-void HorizonEngine::RenderWindow::swapBuffers()
+void RenderWindow::swapBuffers()
 {
 	if (mGLWindow)
 	{

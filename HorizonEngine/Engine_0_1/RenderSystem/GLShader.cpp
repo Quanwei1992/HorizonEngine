@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "GLShader.h"
 
 
@@ -43,3 +44,5 @@ std::string GLShader::getShaderInfoLog()
 	glGetShaderInfoLog(mID, 1024, NULL, infoLog);
 	return infoLog;
 }
+
+

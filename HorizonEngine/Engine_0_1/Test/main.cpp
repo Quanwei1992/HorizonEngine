@@ -3,7 +3,6 @@
 #include <memory>
 
 #include "RenderSystem/RenderSystem.h"
-using namespace HorizonEngine;
 using namespace std;
 int main()
 {
@@ -13,6 +12,6 @@ int main()
 	Application::getSingleton().run();
 	std::cout << "Shutdown Application\n";
 	Application::getSingleton().shutdown();
-	system("pause");
+	//system("pause");
 	return 0;
 }

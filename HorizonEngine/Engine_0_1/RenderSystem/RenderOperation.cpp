@@ -1,15 +1,20 @@
 #include "stdafx.h"
 #include "RenderOperation.h"
 
-using namespace HorizonEngine;
-
-RenderOperation::RenderOperation()
+RenderOperation::RenderOperation(OperationType type, VertexDataPtr data) :
+	mType(type),
+	mVertexData(data)
 {
 
 }
 
-
-RenderOperation::~RenderOperation()
+RenderOperation::OperationType RenderOperation::getType() const
 {
-
+	return mType;
 }
+
+VertexDataPtr RenderOperation::getData() const
+{
+	return mVertexData;
+}
+

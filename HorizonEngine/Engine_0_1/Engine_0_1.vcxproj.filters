@@ -18,12 +18,6 @@
     <ClCompile Include="Test\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystem\RenderWindow.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem\RenderSystem.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Core\LogSystem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -33,19 +27,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystem\RenderTarget.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem\GLStateCacheManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem\RenderOperation.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="RenderSystem\GLBuffer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem\GLBufferManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem\GLProgram.cpp">
@@ -60,14 +42,29 @@
     <ClCompile Include="RenderSystem\GLVertexAttrib.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="RenderSystem\RenderOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\RenderSystem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\RenderTarget.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\RenderWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\Material\MaterialProperty.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\Material\Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem\VertexData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RenderSystem\RenderWindow.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem\RenderSystem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Core\LogSystem.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -77,19 +74,7 @@
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystem\RenderTarget.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem\GLStateCacheManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem\RenderOperation.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="RenderSystem\GLBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem\GLBufferManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\GLProgram.h">
@@ -102,6 +87,30 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\GLVertexAttrib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderOperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderTarget.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\RenderWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\Material\MaterialProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Math.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\Material\Material.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem\VertexData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

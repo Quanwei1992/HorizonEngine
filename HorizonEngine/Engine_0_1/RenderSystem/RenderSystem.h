@@ -9,37 +9,39 @@
 #include "ThirdPart/Includes/glm/glm.hpp"
 // engine
 #include "RenderWindow.h"
-#include "GLStateCacheManager.h"
 #include "RenderOperation.h"
-namespace HorizonEngine
+#include "GLProgram.h"
+#include "Math/Math.h"
+
+class RenderSystem
 {
-	class RenderSystem
-	{
-	public:
-		RenderSystem();
-		~RenderSystem();
-		
-		void startUp();
-		void shutDown();
-		std::shared_ptr<RenderWindow> getRenderWindow();
+public:
+	RenderSystem() = default;
+	~RenderSystem() = default;
 
-		void setRenderTarget(std::shared_ptr<RenderTarget> target);
-		std::shared_ptr<RenderTarget> getRenderTarget();
+	void startUp();
+	void shutDown();
+	std::shared_ptr<RenderWindow> getRenderWindow();
 
-		void setViewport(int x,int y,int width,int height);
+	void setRenderTarget(const RenderTargetPtr& target);
+	std::shared_ptr<RenderTarget> getRenderTarget();
 
-		// render state
-		void setViewMatrix(glm::mat4x4 viewMat);
-		void setProjectionMatrix(glm::mat4x4 viewMat);
+	void setViewport(int x, int y, int width, int height);
 
-		void render(const RenderOperation& op);
+	// render state
+	void setProgram(const GLProgramPtr& program);
+	void setViewMatrix(const Matrix4x4& viewMat);
+	void setProjectionMatrix(const Matrix4x4& projMat);
 
-	protected:
-		std::shared_ptr<RenderWindow> createRenderWindow(unsigned int width,unsigned int height,std::string title);
+	void render(const RenderOperationPtr& op);
 
-	private:
-		std::shared_ptr<RenderWindow> mRenderWindow;
-		std::shared_ptr<RenderTarget> mRenderTarget;
-	};
+protected:
+	RenderWindowPtr createRenderWindow(unsigned int width, unsigned int height, std::string title);
 
-}
+private:
+	RenderWindowPtr mRenderWindow;
+	RenderTargetPtr mRenderTarget;
+	GLProgramPtr mProgram;
+	Matrix4x4 mViewMatrix;
+	Matrix4x4 mProjectionMatrix;
+};

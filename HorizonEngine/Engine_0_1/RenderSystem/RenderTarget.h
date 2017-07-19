@@ -1,12 +1,9 @@
 #pragma once
-namespace HorizonEngine
+
+class RenderTarget
 {
-	class RenderTarget
-	{
-	public:
-		RenderTarget();
-		~RenderTarget();
-	};
-
-}
-
+public:
+	RenderTarget();
+	~RenderTarget();
+};
+typedef std::shared_ptr<RenderTarget> RenderTargetPtr;

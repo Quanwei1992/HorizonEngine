@@ -1,16 +1,14 @@
 #pragma once
+#include <memory>
 #include <string>
-namespace HorizonEngine
+
+class LogSystem
 {
-	class LogSystem
-	{
-	public:
-		LogSystem();
-		~LogSystem();
-		void log(std::string info);
-		void startUp();
-		void shutDown();
-	};
-
-}
-
+public:
+	LogSystem();
+	~LogSystem();
+	void log(std::string info);
+	void startUp();
+	void shutDown();
+};
+typedef std::shared_ptr<LogSystem> LogSystemPtr;

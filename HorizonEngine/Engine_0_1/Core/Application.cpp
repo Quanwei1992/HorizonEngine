@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Application.h"
 
-using namespace HorizonEngine;
 Application::Application()
 {
 }
@@ -10,7 +9,7 @@ Application::~Application()
 {
 }
 
-void HorizonEngine::Application::init()
+void Application::init()
 {
 	mLogSystem = std::make_shared<LogSystem>();
 	mRenderSystem = std::make_shared<RenderSystem>();
@@ -19,8 +18,9 @@ void HorizonEngine::Application::init()
 	mRenderSystem->startUp();
 }
 
-void HorizonEngine::Application::run()
+void Application::run()
 {
+
 	auto renderWindow = mRenderSystem->getRenderWindow();
 	while (!renderWindow->shouldClose())
 	{
@@ -35,8 +35,8 @@ void Application::shutdown()
 	if (mLogSystem)mLogSystem->shutDown();
 }
 
-std::shared_ptr<LogSystem> HorizonEngine::Application::getLogSystem()
+std::shared_ptr<LogSystem> Application::getLogSystem()
 {
-	return this->mLogSystem;
+	return mLogSystem;
 }
 

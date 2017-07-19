@@ -81,7 +81,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32s.lib;opengl32.lib;glfw3.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libglew32d.lib;opengl32.lib;glfw3.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:library %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -121,35 +121,38 @@
   <ItemGroup>
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\LogSystem.cpp" />
+    <ClCompile Include="RenderSystem\Material\Material.cpp" />
+    <ClCompile Include="RenderSystem\Material\MaterialProperty.cpp" />
     <ClCompile Include="RenderSystem\GLVertexAttrib.cpp" />
     <ClCompile Include="RenderSystem\GLProgram.cpp" />
     <ClCompile Include="RenderSystem\GLShader.cpp" />
     <ClCompile Include="RenderSystem\GLVertexArrayObject.cpp" />
-    <ClCompile Include="RenderSystem\GLBufferManager.cpp" />
     <ClCompile Include="RenderSystem\GLBuffer.cpp" />
     <ClCompile Include="RenderSystem\RenderOperation.cpp" />
-    <ClCompile Include="RenderSystem\GLStateCacheManager.cpp" />
     <ClCompile Include="RenderSystem\RenderTarget.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="RenderSystem\RenderSystem.cpp" />
     <ClCompile Include="RenderSystem\RenderWindow.cpp" />
     <ClCompile Include="Test\main.cpp" />
+    <ClCompile Include="RenderSystem\VertexData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\LogSystem.h" />
+    <ClInclude Include="Math\Math.h" />
+    <ClInclude Include="RenderSystem\Material\Material.h" />
+    <ClInclude Include="RenderSystem\Material\MaterialProperty.h" />
     <ClInclude Include="RenderSystem\GLVertexAttrib.h" />
     <ClInclude Include="RenderSystem\GLProgram.h" />
     <ClInclude Include="RenderSystem\GLShader.h" />
     <ClInclude Include="RenderSystem\GLVertexArrayObject.h" />
-    <ClInclude Include="RenderSystem\GLBufferManager.h" />
     <ClInclude Include="RenderSystem\GLBuffer.h" />
     <ClInclude Include="RenderSystem\RenderOperation.h" />
-    <ClInclude Include="RenderSystem\GLStateCacheManager.h" />
     <ClInclude Include="RenderSystem\RenderTarget.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="RenderSystem\RenderSystem.h" />
     <ClInclude Include="RenderSystem\RenderWindow.h" />
+    <ClInclude Include="RenderSystem\VertexData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

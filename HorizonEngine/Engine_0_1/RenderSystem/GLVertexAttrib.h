@@ -8,12 +8,12 @@ class GLVertexAttrib
 {
 
 public:
-	GLVertexAttrib(std::string name,std::shared_ptr<GLBuffer> buffer,
-		GLint size,GLenum type,GLboolean normalized,GLsizei stride,GLvoid* mPointer);
+	GLVertexAttrib(std::string name,GLBufferPtr buffer,
+		GLint size,GLenum type,GLboolean normalized,GLsizei stride,GLvoid* pointer);
 	~GLVertexAttrib();
 
 	const std::string getName()const { return mName;}
-	const std::shared_ptr<GLBuffer> getBuffer() const { return mBuffer; }
+	const GLBufferPtr getBuffer() const { return mBuffer; }
 	const GLint getSize()const { return mSize; }
 	const GLenum getType()const {return mType;}
 	const GLboolean getNormalized()const { return mNormalized; }
@@ -30,4 +30,5 @@ private:
 	GLvoid* mPointer;
 	
 };
+typedef std::shared_ptr<GLVertexAttrib> GLVertexAttribPtr;
 
