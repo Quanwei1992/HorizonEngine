@@ -63,6 +63,21 @@
     <ClCompile Include="RenderSystem\VertexData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SceneSystem\SceneSystem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\GameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Component.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\LogSystem.h">
@@ -111,6 +126,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\VertexData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\SceneSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\System.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\GameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Component.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Transform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\Scene.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

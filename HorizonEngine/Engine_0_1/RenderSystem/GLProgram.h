@@ -15,9 +15,9 @@ public:
 	bool getLinkStatus();
 	std::string getProgramInfoLog();
 	GLuint getID() const;
-	GLuint getUniformID(const std::string& name);
-	void setValue(GLuint uniformID,float value);
-	void setValue(GLuint uniformID,const Matrix4x4& value);
+	GLint getUniformID(const std::string& name);
+	void setValue(GLint uniformID,float value);
+	void setValue(GLint uniformID,const Matrix4x4& value);
 private:
 	GLuint mID;
 };

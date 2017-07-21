@@ -43,19 +43,21 @@ GLuint GLProgram::getID() const
 	return mID;
 }
 
-void GLProgram::setValue(GLuint uniformID, float value)
+void GLProgram::setValue(GLint uniformID, float value)
 {
+	if (uniformID == -1)return;
 	glUseProgram(mID);
 	glUniform1f(uniformID, value);
 }
 
-void GLProgram::setValue(GLuint uniformID, const Matrix4x4 & value)
+void GLProgram::setValue(GLint uniformID, const Matrix4x4 & value)
 {
-	glUseProgram(mID);
+	if (uniformID == -1)return;
+	glUseProgram(mID);	
 	glUniformMatrix4fv(uniformID, 1, GL_FALSE, glm::value_ptr(value));
 }
 
-GLuint GLProgram::getUniformID(const std::string& name)
+GLint GLProgram::getUniformID(const std::string& name)
 {
 	return glGetUniformLocation(mID, name.c_str());
 }

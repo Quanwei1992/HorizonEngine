@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Application.h"
+#include <typeinfo>
 
 Application::Application()
 {
@@ -13,30 +14,50 @@ void Application::init()
 {
 	mLogSystem = std::make_shared<LogSystem>();
 	mRenderSystem = std::make_shared<RenderSystem>();
+	mSceneSystem = std::make_shared<SceneSystem>();
 
 	mLogSystem->startUp();
 	mRenderSystem->startUp();
+	mSceneSystem->startUp();
 }
 
 void Application::run()
 {
+
+	mLogSystem->log(typeid(this).name());
+	
+	//auto scene = mSceneSystem->getScene();
+	//if (auto s = scene.lock()) {
+	//	s->createGameObject();
+	//}
 
 	auto renderWindow = mRenderSystem->getRenderWindow();
 
 	// 创建VertexData
 	// 创建VAO
 	float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f,  0.5f, 0.0f
+		0.5f, 0.5f, 0.0f,   // 右上角
+		0.5f, -0.5f, 0.0f,  // 右下角
+		-0.5f, -0.5f, 0.0f, // 左下角
+		-0.5f, 0.5f, 0.0f   // 左上角
 	};
+
+	unsigned int indices[] = { // 注意索引从0开始! 
+		0, 1, 3, // 第一个三角形
+		1, 2, 3  // 第二个三角形
+	};
+
 	GLVertexArrayObjectPtr vao = std::make_shared<GLVertexArrayObject>();
 	GLBufferPtr vbo = std::make_shared<GLBuffer>(GL_ARRAY_BUFFER);
-	int size = sizeof(vertices);
 	vbo->write(sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	GLBufferPtr ebo = std::make_shared<GLBuffer>(GL_ELEMENT_ARRAY_BUFFER);
+	ebo->write(sizeof(indices),indices,GL_STATIC_DRAW);
+
+	vao->setIndicesBuffer(ebo);
 	vao->addVertexAttrib(0, "Position", vbo, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	vao->apply();
-	VertexDataPtr data = std::make_shared<VertexData>(vao,false,GL_UNSIGNED_BYTE,0,3);
+	VertexDataPtr data = std::make_shared<VertexData>(vao,true,GL_UNSIGNED_INT,6,3);
 
 	// 创建Program
 	const char *vertexShaderSource = "#version 330 core\n"
@@ -85,10 +106,16 @@ void Application::shutdown()
 {
 	if(mRenderSystem)mRenderSystem->shutDown();
 	if (mLogSystem)mLogSystem->shutDown();
+	if (mSceneSystem)mSceneSystem->shutDown();
 }
 
 std::shared_ptr<LogSystem> Application::getLogSystem()
 {
 	return mLogSystem;
+}
+
+std::shared_ptr<SceneSystem> Application::getSceneSystem()
+{
+	return mSceneSystem;
 }
 
