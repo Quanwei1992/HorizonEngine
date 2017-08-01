@@ -13,8 +13,11 @@ public:
 	bool shouldClose();
 	void swapBuffers();
 	void pollEvents();
+	void setTitle(const std::string& title);
 	RenderWindow(unsigned int width, unsigned int height, std::string title);
 	~RenderWindow();
+
+
 private:
 	GLFWwindow* mGLWindow;
 };

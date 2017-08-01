@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\Behaviour.cpp" />
     <ClCompile Include="Component\Component.cpp" />
     <ClCompile Include="Component\Transform.cpp" />
     <ClCompile Include="Core\Application.cpp" />
@@ -141,8 +142,10 @@
     <ClCompile Include="RenderSystem\RenderWindow.cpp" />
     <ClCompile Include="Test\main.cpp" />
     <ClCompile Include="RenderSystem\VertexData.cpp" />
+    <ClCompile Include="Core\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\Behaviour.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\Transform.h" />
     <ClInclude Include="Core\Application.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="RenderSystem\RenderWindow.h" />
     <ClInclude Include="RenderSystem\VertexData.h" />
     <ClInclude Include="Core\System.h" />
+    <ClInclude Include="Core\TimeSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

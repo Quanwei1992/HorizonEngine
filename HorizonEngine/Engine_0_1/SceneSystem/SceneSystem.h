@@ -9,9 +9,12 @@ public:
 	~SceneSystem() override;
 	void startUp() override;
 	void shutDown() override;
+	void update(double dt);
+	void render();
+	void enterScene(const ScenePtr& scene);
 
-	std::weak_ptr<Scene> getScene();
+	std::weak_ptr<Scene> getRunningScene();
 private:
-	ScenePtr mScene;
+	ScenePtr mRunningScene;
 };
 

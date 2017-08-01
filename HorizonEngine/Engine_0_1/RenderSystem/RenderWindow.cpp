@@ -53,3 +53,8 @@ void RenderWindow::pollEvents()
 {
 	glfwPollEvents();
 }
+
+void RenderWindow::setTitle(const std::string & title)
+{
+	glfwSetWindowTitle(mGLWindow, title.c_str());
+}

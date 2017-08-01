@@ -4,12 +4,10 @@
 
 #include "Component.h"
 #include "Math/Math.h"
-class Transform;
-typedef std::shared_ptr<Transform> TransformPtr;
-class Transform:Component
+class Transform : public Component,public std::enable_shared_from_this<Transform>
 {
 public:
-	Transform();
+	Transform() = default;
 	~Transform() override = default;
 
 	const Vector3 getPosition() const;
@@ -23,15 +21,15 @@ public:
 	const Matrix4x4 getWorldMatrix() const;
 	const Matrix4x4 getLocalMatrix() const;
 	
-	void setParent(const TransformPtr& parent);
-	TransformPtr getParent() const;
+	void setParent(const std::shared_ptr<Transform>& parent);
+	std::weak_ptr<Transform> getParent() const;
 
 private:
-	void addChild(const TransformPtr& child);
-	void removeChild(const TransformPtr& child);
+	void addChild(const std::shared_ptr<Transform>& child);
+	void removeChild(const std::shared_ptr<Transform>& child);
 private:
-	TransformPtr mParent;
-	std::vector<TransformPtr> mChildren;
+	std::weak_ptr<Transform> mParent;
+	std::vector<std::shared_ptr<Transform>> mChildren;
 	mutable Matrix4x4 mWorldMatrix;
 	mutable Matrix4x4 mLocalMatrix;
 	mutable bool mIsDirty;
@@ -40,4 +38,4 @@ private:
 	Vector3 mRotation;
 	Vector3 mScale;
 };
-
+typedef std::shared_ptr<Transform> TransformPtr;

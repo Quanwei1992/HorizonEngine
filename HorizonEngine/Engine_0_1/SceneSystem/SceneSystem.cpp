@@ -2,7 +2,8 @@
 #include "SceneSystem.h"
 #include "Component/Transform.h"
 #include <memory>
-SceneSystem::SceneSystem()
+SceneSystem::SceneSystem():
+	mRunningScene(std::make_shared<Scene>())
 {
 
 }
@@ -14,20 +15,41 @@ SceneSystem::~SceneSystem()
 void SceneSystem::startUp()
 {
 
-	std::shared_ptr<Transform> transform = std::make_shared<Transform>();
-	std::shared_ptr<Component> component = transform;
+	//std::shared_ptr<Transform> transform = std::make_shared<Transform>();
+	//std::shared_ptr<Component> component = std::make_shared<Component>(transform);
 
-	Scene* scene = new Scene();
-	auto go = new GameObject();
-	scene->addComponent<Transform>(*go);
+	//Scene* scene = new Scene();
+	//auto go = new GameObject();
+	//scene->addComponent<Transform>(*go);
 }
 
 void SceneSystem::shutDown()
 {
-
+	if (mRunningScene) {
+		mRunningScene->leave();
+	}
 }
 
-std::weak_ptr<Scene> SceneSystem::getScene()
+void SceneSystem::update(double dt)
 {
-	return std::weak_ptr<Scene>(mScene);
+}
+
+void SceneSystem::render()
+{
+}
+
+void SceneSystem::enterScene(const ScenePtr & scene)
+{
+	if (scene && mRunningScene != scene) {
+		if (mRunningScene) {
+			mRunningScene->leave();
+		}
+		mRunningScene = scene;
+		mRunningScene->enter();
+	}
+}
+
+std::weak_ptr<Scene> SceneSystem::getRunningScene()
+{
+	return std::weak_ptr<Scene>(mRunningScene);
 }

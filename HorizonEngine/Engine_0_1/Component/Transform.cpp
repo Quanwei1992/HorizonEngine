@@ -1,10 +1,6 @@
 #include "stdafx.h"
 #include "Transform.h"
 #include <algorithm> 
-Transform::Transform()
-{
-
-}
 
 const Vector3 Transform::getPosition() const
 {
@@ -13,6 +9,7 @@ const Vector3 Transform::getPosition() const
 
 const Vector3 Transform::getRotation() const
 {
+
 	return mRotation;
 }
 
@@ -49,36 +46,44 @@ const Matrix4x4 Transform::getLocalMatrix() const
 	return mLocalMatrix;
 }
 
-void Transform::setParent(const TransformPtr & parent)
+void Transform::setParent(const std::shared_ptr<Transform>& parent)
 {
-	//// 从原来的Parent移除
-	//if (mParent){
-	//	mParent->removeChild(getOnwer()->getTransform());
-	//}
-	//mParent = parent;
-	//if (mParent)
-	//{
-	//	mParent->addChild(getOnwer()->getTransform());
-	//}
+	// remove form old parent
+	if (auto pOldParent = mParent.lock()) {
+		pOldParent->removeChild(shared_from_this());
+	}
+	if (parent) {
+		parent->addChild(shared_from_this());
+	}
+	else
+	{
+		mParent = parent;
+	}
 }
 
-TransformPtr Transform::getParent() const
+std::weak_ptr<Transform> Transform::getParent() const
 {
 	return mParent;
 }
 
-void Transform::addChild(const TransformPtr & child)
+void Transform::addChild(const std::shared_ptr<Transform>& child)
 {
-	assert(child);
+	auto pChild = child;
+	if (!pChild)return;
+	// 先查找是否重复添加.
+	auto result = std::find(mChildren.begin(), mChildren.end(), child);
+	if (result != mChildren.end())return;
 	mChildren.push_back(child);
 }
 
-void Transform::removeChild(const TransformPtr & child)
+void Transform::removeChild(const std::shared_ptr<Transform>& child)
 {
-	assert(child);
-	auto iter = std::find(mChildren.begin(), mChildren.end(), child);
-	if (iter != mChildren.end()) {
-		mChildren.erase(iter);
+	auto result = std::find(mChildren.begin(), mChildren.end(), child);
+	if (result != mChildren.end()) {
+		mChildren.erase(result);
+		auto pChild = child;
+		if (pChild) {
+			pChild->setParent(std::shared_ptr<Transform>());
+		}
 	}
 }
-

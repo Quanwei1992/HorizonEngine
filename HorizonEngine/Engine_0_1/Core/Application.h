@@ -1,8 +1,10 @@
 #pragma once
 #include <memory>
 #include "Core/LogSystem.h"
+#include "Core/TimeSystem.h"
 #include "RenderSystem/RenderSystem.h"
 #include "SceneSystem/SceneSystem.h"
+
 class Application
 {
 public:
@@ -14,11 +16,15 @@ public:
 
 	std::shared_ptr<LogSystem> getLogSystem();
 	std::shared_ptr<SceneSystem> getSceneSystem();
+	std::shared_ptr<TimeSystem> getTimeSystem();
 
 private:
 	std::shared_ptr<LogSystem> mLogSystem;
 	std::shared_ptr<RenderSystem> mRenderSystem;
 	std::shared_ptr<SceneSystem> mSceneSystem;
+	std::shared_ptr<TimeSystem> mTimeSystem;
+
+	float mFPS;
 
 public:
 	static Application& getSingleton()
