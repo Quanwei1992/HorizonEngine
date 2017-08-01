@@ -8,19 +8,14 @@ SceneSystem::SceneSystem():
 
 }
 
-SceneSystem::~SceneSystem()
-{
-}
-
 void SceneSystem::startUp()
 {
-
-	//std::shared_ptr<Transform> transform = std::make_shared<Transform>();
-	//std::shared_ptr<Component> component = std::make_shared<Component>(transform);
-
-	//Scene* scene = new Scene();
-	//auto go = new GameObject();
-	//scene->addComponent<Transform>(*go);
+	auto go =  mRunningScene->createGameObject().lock();
+	go->addComponent<Camera>();
+	auto transform = go->getComponent<Camera>();
+	go->destoryComponent(transform.lock());
+	int count = transform.use_count();
+	transform = go->getComponent<Camera>();
 }
 
 void SceneSystem::shutDown()
@@ -32,10 +27,18 @@ void SceneSystem::shutDown()
 
 void SceneSystem::update(double dt)
 {
+
 }
 
 void SceneSystem::render()
 {
+	assert(mRunningScene);
+	auto objs = mRunningScene->getAllGameObjects();
+	for (auto weak_obj:objs)
+	{
+		auto obj = weak_obj.lock();
+		if (!obj)continue;
+	}
 }
 
 void SceneSystem::enterScene(const ScenePtr & scene)

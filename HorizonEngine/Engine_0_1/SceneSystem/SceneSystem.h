@@ -6,7 +6,7 @@ class SceneSystem : System
 {
 public:
 	SceneSystem();
-	~SceneSystem() override;
+	~SceneSystem() override = default;
 	void startUp() override;
 	void shutDown() override;
 	void update(double dt);

@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
-std::weak_ptr<Component> GameObject::addComponent()
-{
-	auto ptr = shared_from_this();
-	auto compoent = std::make_shared<Component>(std::weak_ptr<GameObject>(ptr));
-	mComponents.push_back(compoent);
-	return std::weak_ptr<Component>(compoent);
-}
+
 
 void GameObject::onAwake()
 {
@@ -24,4 +18,26 @@ void GameObject::onDestory()
 		component->onDestory();
 	}
 	mComponents.clear();
+}
+
+std::vector<std::weak_ptr<Component>> GameObject::getAllCompoents()
+{
+	std::vector<std::weak_ptr<Component>> temp;
+	for (auto co : mComponents)
+	{
+		temp.push_back(co);
+	}
+	return temp;
+}
+
+
+void GameObject::destoryComponent(const std::shared_ptr<Component>& component)
+{
+	if (!component)return;
+	auto result = std::find(mComponents.begin(), mComponents.end(), component);
+	if (result != mComponents.end())
+	{
+		component->onDestory();
+		mComponents.erase(result);
+	}
 }

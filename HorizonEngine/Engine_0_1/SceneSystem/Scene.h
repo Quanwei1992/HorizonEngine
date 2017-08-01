@@ -12,7 +12,7 @@ public:
 	
 	std::weak_ptr<GameObject> createGameObject();
 	void destoryGameObject(const std::weak_ptr<GameObject>& go);
-
+	std::vector <std::weak_ptr<GameObject>> getAllGameObjects();
 private:
 	friend SceneSystem;
 	void enter();

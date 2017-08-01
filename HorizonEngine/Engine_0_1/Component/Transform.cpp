@@ -2,6 +2,10 @@
 #include "Transform.h"
 #include <algorithm> 
 
+Transform::Transform(std::weak_ptr<GameObject> onwer):Component(onwer)
+{
+}
+
 const Vector3 Transform::getPosition() const
 {
 	return mPosition;

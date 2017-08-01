@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\Camera.cpp" />
     <ClCompile Include="Component\Behaviour.cpp" />
     <ClCompile Include="Component\Component.cpp" />
     <ClCompile Include="Component\Transform.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Core\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\Camera.h" />
     <ClInclude Include="Component\Behaviour.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\Transform.h" />

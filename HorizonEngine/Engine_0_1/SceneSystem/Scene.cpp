@@ -22,6 +22,16 @@ void Scene::destoryGameObject(const std::weak_ptr<GameObject>& go)
 	}
 }
 
+std::vector<std::weak_ptr<GameObject>> Scene::getAllGameObjects()
+{
+	std::vector<std::weak_ptr<GameObject>> temp;
+	for (auto go:mGameObjects)
+	{
+		temp.push_back(go);
+	}
+	return temp;
+}
+
 void Scene::enter()
 {
 	for (auto go:mGameObjects)
