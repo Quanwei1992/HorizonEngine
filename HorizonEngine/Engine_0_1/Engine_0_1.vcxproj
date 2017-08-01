@@ -126,6 +126,8 @@
     <ClCompile Include="Component\Transform.cpp" />
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\LogSystem.cpp" />
+    <ClCompile Include="Component\Renderer.cpp" />
+    <ClCompile Include="RenderSystem\Renderable.cpp" />
     <ClCompile Include="RenderSystem\Material\Material.cpp" />
     <ClCompile Include="RenderSystem\Material\MaterialProperty.cpp" />
     <ClCompile Include="RenderSystem\GLVertexAttrib.cpp" />
@@ -153,6 +155,8 @@
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\LogSystem.h" />
     <ClInclude Include="Math\Math.h" />
+    <ClInclude Include="Component\Renderer.h" />
+    <ClInclude Include="RenderSystem\Renderable.h" />
     <ClInclude Include="RenderSystem\Material\Material.h" />
     <ClInclude Include="RenderSystem\Material\MaterialProperty.h" />
     <ClInclude Include="RenderSystem\GLVertexAttrib.h" />

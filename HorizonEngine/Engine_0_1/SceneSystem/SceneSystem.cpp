@@ -12,10 +12,6 @@ void SceneSystem::startUp()
 {
 	auto go =  mRunningScene->createGameObject().lock();
 	go->addComponent<Camera>();
-	auto transform = go->getComponent<Camera>();
-	go->destoryComponent(transform.lock());
-	int count = transform.use_count();
-	transform = go->getComponent<Camera>();
 }
 
 void SceneSystem::shutDown()
@@ -34,10 +30,15 @@ void SceneSystem::render()
 {
 	assert(mRunningScene);
 	auto objs = mRunningScene->getAllGameObjects();
+	std::vector<std::shared_ptr<Camera>> cameras;
 	for (auto weak_obj:objs)
 	{
 		auto obj = weak_obj.lock();
 		if (!obj)continue;
+		auto camera = obj->getComponent<Camera>().lock();
+		if (camera) {
+			cameras.push_back(camera);
+		}
 	}
 }
 

@@ -46,8 +46,8 @@ inline std::weak_ptr<T> GameObject::addComponent()
 	auto old = getComponent<T>().lock();
 	if (old)destoryComponent(old);
 
-	auto self_weak = std::weak_ptr<GameObject>(shared_from_this());
-	std::shared_ptr<Component> component_base = std::make_shared<T>(self_weak);
+	std::shared_ptr<Component> component_base = std::make_shared<T>();
+	component_base->setOnwer(shared_from_this());
 	mComponents.push_back(component_base);
 	auto component_derived = std::static_pointer_cast<T>(component_base);
 	auto derived_weak = std::weak_ptr<T>(component_derived);

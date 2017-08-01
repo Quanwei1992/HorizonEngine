@@ -3,7 +3,7 @@
 class Camera : public Component
 {
 public:
-	Camera(std::weak_ptr<GameObject> onwer);
+	Camera() = default;
 	~Camera() override = default;
 };
 

@@ -5,12 +5,13 @@ class GameObject;
 class Component
 {
 public:
-	Component(std::weak_ptr<GameObject> onwer);
+	Component() = default;
 	virtual ~Component() = default;
-	
 	std::weak_ptr<GameObject> getOnwer() const;
 private:
 	friend GameObject;
+
+	void setOnwer(std::shared_ptr<GameObject> onwer);
 	virtual void onAwake();
 	virtual void onDestory();
 private:

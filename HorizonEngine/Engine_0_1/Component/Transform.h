@@ -7,7 +7,7 @@
 class Transform : public Component,public std::enable_shared_from_this<Transform>
 {
 public:
-	Transform(std::weak_ptr<GameObject> onwer);
+	Transform() = default;
 	~Transform() override = default;
 
 	const Vector3 getPosition() const;
