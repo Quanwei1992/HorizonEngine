@@ -11,4 +11,4 @@ public:
 	virtual RenderablePtr render() = 0;
 	virtual void afterRender() {}
 };
-
+using RendererPtr = std::shared_ptr<Renderer>;

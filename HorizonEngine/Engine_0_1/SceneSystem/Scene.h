@@ -22,7 +22,7 @@ private:
 
 	
 };
-typedef std::shared_ptr<Scene> ScenePtr;
+using ScenePtr =  std::shared_ptr<Scene> ;
 
 
 

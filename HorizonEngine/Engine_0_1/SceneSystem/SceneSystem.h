@@ -2,6 +2,7 @@
 #include <memory>
 #include "Core/System.h"
 #include "Scene.h"
+#include "SceneSystem/Renderer/SceneRenderer.h"
 class SceneSystem : System
 {
 public:
@@ -16,5 +17,6 @@ public:
 	std::weak_ptr<Scene> getRunningScene();
 private:
 	ScenePtr mRunningScene;
+	SceneRendererPtr mRenderer;
 };
 

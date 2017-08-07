@@ -20,6 +20,8 @@ public:
 	std::weak_ptr<T> addComponent();
 	template<typename T>
 	std::weak_ptr<T> getComponent();
+	template<typename T>
+	std::vector<std::weak_ptr<T>> getComponents();
 
 	void destoryComponent(const std::shared_ptr<Component>& component);
 
@@ -42,10 +44,6 @@ typedef std::shared_ptr<GameObject> GameObjectPtr;
 template<typename T>
 inline std::weak_ptr<T> GameObject::addComponent()
 {
-	// 每个类型的Component只能同时有一个.
-	auto old = getComponent<T>().lock();
-	if (old)destoryComponent(old);
-
 	std::shared_ptr<Component> component_base = std::make_shared<T>();
 	component_base->setOnwer(shared_from_this());
 	mComponents.push_back(component_base);
@@ -65,4 +63,18 @@ inline std::weak_ptr<T> GameObject::getComponent()
 		}
 	}
 	return std::weak_ptr<T>();
+}
+
+template<typename T>
+inline std::vector<std::weak_ptr<T>> GameObject::getComponents()
+{
+	std::vector<std::weak_ptr<T>> retList;
+	for (auto component_base : mComponents)
+	{
+		std::shared_ptr<T> derived_ptr = std::dynamic_pointer_cast<T>(component_base);
+		if (derived_ptr) {
+			retList.push_back(std::weak_ptr<T>(derived_ptr));
+		}
+	}
+	return retList;
 }

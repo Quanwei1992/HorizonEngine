@@ -63,9 +63,6 @@
     <ClCompile Include="RenderSystem\VertexData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SceneSystem\SceneSystem.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SceneSystem\GameObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -91,6 +88,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem\Renderable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\SceneSystem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\Renderer\SceneRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\Renderer\RenderPath.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem\Renderer\ForwardRenderPath.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,9 +155,6 @@
     <ClInclude Include="RenderSystem\VertexData.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SceneSystem\SceneSystem.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Core\System.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -174,6 +183,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem\Renderable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\SceneSystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\Renderer\SceneRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\Renderer\RenderPath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem\Renderer\ForwardRenderPath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Light.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Component.h"
 class Camera : public Component
 {
@@ -7,3 +8,4 @@ public:
 	~Camera() override = default;
 };
 
+using CameraPtr = std::shared_ptr<Camera>;

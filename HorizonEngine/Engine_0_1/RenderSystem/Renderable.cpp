@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Renderable.h"
 
 Renderable::Renderable(const MaterialPtr & material, const Matrix4x4 & modelMatrix, const RenderOperationPtr & renderOp)

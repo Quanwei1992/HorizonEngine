@@ -127,6 +127,9 @@
     <ClCompile Include="Core\Application.cpp" />
     <ClCompile Include="Core\LogSystem.cpp" />
     <ClCompile Include="Component\Renderer.cpp" />
+    <ClCompile Include="Component\Light.cpp" />
+    <ClCompile Include="SceneSystem\Renderer\ForwardRenderPath.cpp" />
+    <ClCompile Include="SceneSystem\Renderer\RenderPath.cpp" />
     <ClCompile Include="RenderSystem\Renderable.cpp" />
     <ClCompile Include="RenderSystem\Material\Material.cpp" />
     <ClCompile Include="RenderSystem\Material\MaterialProperty.cpp" />
@@ -137,6 +140,7 @@
     <ClCompile Include="RenderSystem\GLBuffer.cpp" />
     <ClCompile Include="RenderSystem\RenderOperation.cpp" />
     <ClCompile Include="RenderSystem\RenderTarget.cpp" />
+    <ClCompile Include="SceneSystem\Renderer\SceneRenderer.cpp" />
     <ClCompile Include="SceneSystem\GameObject.cpp" />
     <ClCompile Include="SceneSystem\Scene.cpp" />
     <ClCompile Include="SceneSystem\SceneSystem.cpp" />
@@ -154,8 +158,11 @@
     <ClInclude Include="Component\Transform.h" />
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\LogSystem.h" />
+    <ClInclude Include="Component\Light.h" />
+    <ClInclude Include="SceneSystem\Renderer\ForwardRenderPath.h" />
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Component\Renderer.h" />
+    <ClInclude Include="SceneSystem\Renderer\RenderPath.h" />
     <ClInclude Include="RenderSystem\Renderable.h" />
     <ClInclude Include="RenderSystem\Material\Material.h" />
     <ClInclude Include="RenderSystem\Material\MaterialProperty.h" />
@@ -166,6 +173,7 @@
     <ClInclude Include="RenderSystem\GLBuffer.h" />
     <ClInclude Include="RenderSystem\RenderOperation.h" />
     <ClInclude Include="RenderSystem\RenderTarget.h" />
+    <ClInclude Include="SceneSystem\Renderer\SceneRenderer.h" />
     <ClInclude Include="SceneSystem\GameObject.h" />
     <ClInclude Include="SceneSystem\Scene.h" />
     <ClInclude Include="SceneSystem\SceneSystem.h" />

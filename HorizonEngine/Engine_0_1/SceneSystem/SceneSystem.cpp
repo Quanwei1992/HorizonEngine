@@ -1,9 +1,14 @@
 #include "stdafx.h"
+#include <memory>
+#include <typeinfo>
 #include "SceneSystem.h"
 #include "Component/Transform.h"
-#include <memory>
+#include "Component/Renderer.h"
+#include "Component/Behaviour.h"
+
 SceneSystem::SceneSystem():
-	mRunningScene(std::make_shared<Scene>())
+	mRunningScene(std::make_shared<Scene>()),
+	mRenderer(std::make_shared<SceneRenderer>())
 {
 
 }
@@ -29,17 +34,7 @@ void SceneSystem::update(double dt)
 void SceneSystem::render()
 {
 	assert(mRunningScene);
-	auto objs = mRunningScene->getAllGameObjects();
-	std::vector<std::shared_ptr<Camera>> cameras;
-	for (auto weak_obj:objs)
-	{
-		auto obj = weak_obj.lock();
-		if (!obj)continue;
-		auto camera = obj->getComponent<Camera>().lock();
-		if (camera) {
-			cameras.push_back(camera);
-		}
-	}
+	mRenderer->render(mRunningScene);
 }
 
 void SceneSystem::enterScene(const ScenePtr & scene)
