@@ -17,6 +17,7 @@ public:
 	std::shared_ptr<LogSystem> getLogSystem();
 	std::shared_ptr<SceneSystem> getSceneSystem();
 	std::shared_ptr<TimeSystem> getTimeSystem();
+	std::shared_ptr<RenderSystem> getRenderSystem();
 
 private:
 	std::shared_ptr<LogSystem> mLogSystem;

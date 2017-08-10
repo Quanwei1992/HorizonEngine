@@ -14,11 +14,15 @@ public:
 	void swapBuffers();
 	void pollEvents();
 	void setTitle(const std::string& title);
+	unsigned int getWidth() const;
+	unsigned int getHeight() const;
 	RenderWindow(unsigned int width, unsigned int height, std::string title);
 	~RenderWindow();
 
 
 private:
 	GLFWwindow* mGLWindow;
+	unsigned int mWidth;
+	unsigned int mHeight;
 };
 typedef std::shared_ptr<RenderWindow> RenderWindowPtr;

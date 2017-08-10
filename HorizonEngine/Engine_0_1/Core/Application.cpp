@@ -70,3 +70,8 @@ std::shared_ptr<TimeSystem> Application::getTimeSystem()
 	return mTimeSystem;
 }
 
+std::shared_ptr<RenderSystem> Application::getRenderSystem()
+{
+	return mRenderSystem;
+}
+

@@ -3,7 +3,9 @@
 
 
 RenderWindow::RenderWindow(unsigned int width, unsigned int height, std::string title):
-	mGLWindow(nullptr)
+	mGLWindow(nullptr),
+	mWidth(width),
+	mHeight(height)
 {
 	auto logsys = Application::getSingleton().getLogSystem();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -57,4 +59,14 @@ void RenderWindow::pollEvents()
 void RenderWindow::setTitle(const std::string & title)
 {
 	glfwSetWindowTitle(mGLWindow, title.c_str());
+}
+
+unsigned int RenderWindow::getWidth() const
+{
+	return mWidth;
+}
+
+unsigned int RenderWindow::getHeight() const
+{
+	return mHeight;
 }

@@ -68,10 +68,22 @@ void SceneRenderer::render(const ScenePtr & scene)
 		}
 		return false;
 	});
+
+	auto renderSys = Application::getSingleton().getRenderSystem();
+	auto renderWindow = renderSys->getRenderWindow();
+	unsigned int window_width = renderWindow->getWidth();
+	unsigned int window_height = renderWindow->getHeight();
 	// render
 	for (auto camera : cameras)
 	{
 		// 设置viewport
+		auto viewPort = camera->getViewport();
+
+		int vx = viewPort.x * window_width;
+		int vy = viewPort.y * window_height;
+		int vw = viewPort.z * window_width;
+		int vh = viewPort.w * window_height;
+		renderSys->setViewport(vx,vy,vw,vh);
 		// 设置view矩阵
 		// 设置投影矩阵
 		// clear

@@ -7,7 +7,7 @@ Camera::Camera():
 
 }
 
-float Camera::getDepth() const
+const float Camera::getDepth() const
 {
 	return mDepth;
 }
@@ -15,4 +15,14 @@ float Camera::getDepth() const
 void Camera::setDepth(float depth)
 {
 	mDepth = depth;
+}
+
+const Vector4 Camera::getViewport() const
+{
+	return mViewport;
+}
+
+void Camera::setViewport(const Vector4 & rect)
+{
+	mViewport = rect;
 }
