@@ -4,8 +4,14 @@
 class Camera : public Component
 {
 public:
-	Camera() = default;
+	Camera();
 	~Camera() override = default;
+
+	float getDepth() const;
+	void  setDepth(float depth);
+
+private:
+	float mDepth;
 };
 
 using CameraPtr = std::shared_ptr<Camera>;

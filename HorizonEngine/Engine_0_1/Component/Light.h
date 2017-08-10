@@ -7,4 +7,4 @@ public:
 	Light() = default;
 	~Light() override = default;
 };
-
+using LightPtr = std::shared_ptr<Light>;
