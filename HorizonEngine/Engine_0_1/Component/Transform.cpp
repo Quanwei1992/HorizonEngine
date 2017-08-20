@@ -3,6 +3,16 @@
 #include <algorithm> 
 
 
+Transform::Transform():
+	mPosition(0,0,0)
+	,mRotation(0,0,0)
+	,mScale(1,1,1)
+	,mWorldDirty(true)
+	,mIsDirty(true)
+{
+
+}
+
 const Vector3 Transform::getPosition() const
 {
 	return mPosition;
@@ -10,7 +20,6 @@ const Vector3 Transform::getPosition() const
 
 const Vector3 Transform::getRotation() const
 {
-
 	return mRotation;
 }
 
@@ -22,28 +31,38 @@ const Vector3 Transform::getScale() const
 void Transform::setPosition(const Vector3 & pos)
 {
 	mPosition = pos;
-	mIsDirty = true;
+	markDirty();
 }
 
 void Transform::setRotation(const Vector3 & rot)
 {
 	mRotation = rot;
-	mIsDirty = true;
+	markDirty();
 }
 
 void Transform::setScale(const Vector3 & scale)
 {
 	mScale = scale;
-	mIsDirty = true;
+	markDirty();
 }
 
 const Matrix4x4 Transform::getWorldMatrix() const
 {
-	return Matrix4x4();
+	if (mWorldDirty) {
+		if (auto parent = mParent.lock()) {
+			mWorldMatrix = parent->getWorldMatrix() * parent->getLocalMatrix();
+			mWorldDirty = false;
+		}
+	}
+	return mWorldMatrix;
 }
 
 const Matrix4x4 Transform::getLocalMatrix() const
 {
+	if (mIsDirty) {
+		mLocalMatrix = Transform::Combine(mPosition, mRotation, mScale);
+		mIsDirty = false;
+	}
 	return mLocalMatrix;
 }
 
@@ -67,6 +86,22 @@ std::weak_ptr<Transform> Transform::getParent() const
 	return mParent;
 }
 
+void Transform::setWorldMatrixDirty()
+{
+	mWorldDirty = true;
+}
+
+void Transform::markDirty()
+{
+	mIsDirty = true;
+	for (auto child : mChildren)
+	{
+		if (child) {
+			child->setWorldMatrixDirty();
+		}
+	}
+}
+
 void Transform::addChild(const std::shared_ptr<Transform>& child)
 {
 	auto pChild = child;
@@ -87,4 +122,15 @@ void Transform::removeChild(const std::shared_ptr<Transform>& child)
 			pChild->setParent(std::shared_ptr<Transform>());
 		}
 	}
+}
+
+const Matrix4x4 Transform::Combine(Vector3 pos, Vector3 rot, Vector3 scale)
+{
+	Matrix4x4 mat;
+	mat = glm::scale(mat, scale);
+	mat = glm::rotate(mat, glm::radians(rot.x), Vector3(1, 0, 0));
+	mat = glm::rotate(mat, glm::radians(rot.y), Vector3(0, 1, 0));
+	mat = glm::rotate(mat, glm::radians(rot.z), Vector3(0, 0, 1));
+	mat = glm::translate(mat, pos);
+	return mat;
 }

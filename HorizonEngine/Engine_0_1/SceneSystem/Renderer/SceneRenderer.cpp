@@ -85,6 +85,7 @@ void SceneRenderer::render(const ScenePtr & scene)
 		int vh = viewPort.w * window_height;
 		renderSys->setViewport(vx,vy,vw,vh);
 		// 设置view矩阵
+		
 		// 设置投影矩阵
 		// clear
 		// 用RenderPath处理Lights和Renderables.
