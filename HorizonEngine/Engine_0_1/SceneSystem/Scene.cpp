@@ -8,6 +8,7 @@ std::weak_ptr<GameObject> Scene::createGameObject()
 {
 	auto go = GameObjectPtr(new GameObject());
 	mGameObjects.push_back(go);
+	go->addComponent<Transform>();
 	return std::weak_ptr<GameObject>(go);
 }
 

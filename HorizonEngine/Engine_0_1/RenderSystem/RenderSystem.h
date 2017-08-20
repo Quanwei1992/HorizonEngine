@@ -33,7 +33,8 @@ public:
 	void setViewMatrix(const Matrix4x4& viewMat);
 	void setProjectionMatrix(const Matrix4x4& projMat);
 	void setModelMatrix(const Matrix4x4& modelMat);
-
+	void Clear(bool color,bool depth,bool stencil);
+	void setClearColor(const Color4f& color);
 	void render(const RenderOperationPtr& op);
 
 protected:

@@ -57,6 +57,26 @@ void RenderSystem::setModelMatrix(const Matrix4x4 & modelMat)
 	mModelMatrix = mModelMatrix;
 }
 
+void RenderSystem::Clear(bool color, bool depth,bool stencil)
+{
+	GLbitfield mask = 0;
+	if (color) {
+		mask = mask | GL_COLOR_BUFFER_BIT;
+	}
+	if (depth) {
+		mask = mask | GL_DEPTH_BUFFER_BIT;
+	}
+	if (stencil) {
+		mask = mask | GL_STENCIL_BUFFER_BIT;
+	}
+	glClear(mask);
+}
+
+void RenderSystem::setClearColor(const Color4f & color)
+{
+	glClearColor(color.r, color.g, color.b, color.a);
+}
+
 void RenderSystem::render(const RenderOperationPtr& op)
 {
 	GLenum type = GL_TRIANGLES;

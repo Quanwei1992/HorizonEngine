@@ -79,15 +79,28 @@ void SceneRenderer::render(const ScenePtr & scene)
 		// 设置viewport
 		auto viewPort = camera->getViewport();
 
-		int vx = viewPort.x * window_width;
-		int vy = viewPort.y * window_height;
-		int vw = viewPort.z * window_width;
-		int vh = viewPort.w * window_height;
+		int vx = (int)(viewPort.x * window_width);
+		int vy = (int)(viewPort.y * window_height);
+		int vw = (int)(viewPort.z * window_width);
+		int vh = (int)(viewPort.w * window_height);
 		renderSys->setViewport(vx,vy,vw,vh);
 		// 设置view矩阵
-		
+		renderSys->setViewMatrix(camera->getViewMatrix());
 		// 设置投影矩阵
+		renderSys->setProjectionMatrix(camera->getProjectionMatrix());
 		// clear
+		auto clearFlag = camera->getClearFlag();
+		if (clearFlag == Camera::ClearFlags::SolidColor) {
+			renderSys->setClearColor(camera->getClearColor());
+			renderSys->Clear(true, false, false);
+		}else if (clearFlag == Camera::ClearFlags::Depth)
+		{
+			renderSys->Clear(false,true, false);
+		}else if (clearFlag == Camera::ClearFlags::ColorAndDepth)
+		{
+			renderSys->setClearColor(camera->getClearColor());
+			renderSys->Clear(true, true, false);
+		}
 		// 用RenderPath处理Lights和Renderables.
 	}
 }

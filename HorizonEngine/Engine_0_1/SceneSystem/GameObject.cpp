@@ -31,6 +31,11 @@ std::vector<std::weak_ptr<Component>> GameObject::getAllCompoents()
 }
 
 
+GameObject::GameObject()
+{
+	
+}
+
 void GameObject::destoryComponent(const std::shared_ptr<Component>& component)
 {
 	if (!component)return;

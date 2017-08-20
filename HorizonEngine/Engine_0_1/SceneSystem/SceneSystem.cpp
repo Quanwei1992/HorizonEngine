@@ -18,9 +18,7 @@ void SceneSystem::startUp()
 	auto go1 =  mRunningScene->createGameObject().lock();
 	auto camera1 = go1->addComponent<Camera>().lock();
 	camera1->setDepth(15);
-	auto go2 = mRunningScene->createGameObject().lock();
-	auto camera2 = go2->addComponent<Camera>().lock();
-	camera2->setDepth(-1);
+	camera1->setClearColor(Color4f(1, 0, 0, 1));
 }
 
 void SceneSystem::shutDown()

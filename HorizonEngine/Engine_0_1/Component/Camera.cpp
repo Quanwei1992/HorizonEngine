@@ -9,10 +9,14 @@ Camera::Camera() :
 	, mFarClipPanle(1000.0f)
 	, mViewport()
 	, mProjectionType(Projection::Perspective)
-	, mClearColor(Color3f(0,0,0))
+	, mClearColor(Color4f(0,0,0,1))
 	, mClearFlag(ClearFlags::SolidColor)
 {
-
+	auto renderSystem = Application::getSingleton().getRenderSystem();
+	auto win = renderSystem->getRenderWindow();
+	auto width = win->getWidth();
+	auto height = win->getHeight();
+	mAspect = (float)width / (float)height;
 }
 
 const float Camera::getDepth() const
@@ -85,12 +89,12 @@ const Camera::Projection Camera::getProjection() const
 	return mProjectionType;
 }
 
-void Camera::setClearColor(Color3f color)
+void Camera::setClearColor(const Color4f& color)
 {
 	mClearColor = color;
 }
 
-const Color3f Camera::getClearColor() const
+const Color4f Camera::getClearColor() const
 {
 	return mClearColor;
 }
@@ -102,9 +106,12 @@ const Matrix4x4 Camera::getViewMatrix() const
 	if (go) {
 		auto transform = go->getComponent<Transform>().lock();
 		if (transform) {
-
+			auto local2world = transform->getWorldMatrix() * transform->getLocalMatrix();
+			auto world2camera = glm::inverse(local2world);
+			temp = world2camera;
 		}
 	}
+	return temp;
 }
 
 const Matrix4x4 Camera::getProjectionMatrix() const
@@ -128,4 +135,14 @@ void Camera::setOrthoRect(Vector4 rect)
 const Vector4 Camera::getOrthoRect() const
 {
 	return mOrthoRect;
+}
+
+void Camera::setClearFlag(ClearFlags flag)
+{
+	mClearFlag = flag;
+}
+
+const Camera::ClearFlags Camera::getClearFlag() const
+{
+	return mClearFlag;
 }

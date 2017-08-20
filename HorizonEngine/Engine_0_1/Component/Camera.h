@@ -13,6 +13,7 @@ public:
 	enum class ClearFlags {
 		SolidColor,
 		Depth,
+		ColorAndDepth,
 		Nothing
 	};
 
@@ -39,8 +40,8 @@ public:
 	void setProjection(Camera::Projection projection);
 	const Camera::Projection getProjection() const;
 
-	void setClearColor(Color3f color);
-	const Color3f getClearColor() const;
+	void setClearColor(const Color4f& color);
+	const Color4f getClearColor() const;
 
 	const Matrix4x4 getViewMatrix() const;
 	const Matrix4x4 getProjectionMatrix() const;
@@ -48,6 +49,8 @@ public:
 	void setOrthoRect(Vector4 rect);
 	const Vector4 getOrthoRect() const;
 
+	void setClearFlag(ClearFlags rect);
+	const ClearFlags getClearFlag() const;
 
 private:
 	float mDepth;
@@ -58,11 +61,8 @@ private:
 	Vector4 mViewport;
 	Vector4 mOrthoRect;
 	Camera::Projection mProjectionType;
-	Color3f mClearColor;
+	Color4f mClearColor;
 	ClearFlags mClearFlag;
-
-
-	
 };
 
 using CameraPtr = std::shared_ptr<Camera>;

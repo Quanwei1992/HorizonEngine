@@ -14,7 +14,7 @@ class Scene;
 class GameObject:public std::enable_shared_from_this<GameObject>
 {
 public:
-	GameObject() = default;
+	GameObject();
 	~GameObject() = default;
 	template<typename T>
 	std::weak_ptr<T> addComponent();
