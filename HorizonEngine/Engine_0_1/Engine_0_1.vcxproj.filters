@@ -105,6 +105,9 @@
     <ClCompile Include="Component\Light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Component\MeshRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\LogSystem.h">
@@ -198,6 +201,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Component\Light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\MeshRenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

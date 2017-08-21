@@ -101,6 +101,6 @@ void SceneRenderer::render(const ScenePtr & scene)
 			renderSys->setClearColor(camera->getClearColor());
 			renderSys->Clear(true, true, false);
 		}
-		// 用RenderPath处理Lights和Renderables.
+		mRenderPath->render(camera, renderables,lightes);
 	}
 }

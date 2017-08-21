@@ -128,6 +128,7 @@
     <ClCompile Include="Core\LogSystem.cpp" />
     <ClCompile Include="Component\Renderer.cpp" />
     <ClCompile Include="Component\Light.cpp" />
+    <ClCompile Include="Component\MeshRenderer.cpp" />
     <ClCompile Include="SceneSystem\Renderer\ForwardRenderPath.cpp" />
     <ClCompile Include="SceneSystem\Renderer\RenderPath.cpp" />
     <ClCompile Include="RenderSystem\Renderable.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Core\Application.h" />
     <ClInclude Include="Core\LogSystem.h" />
     <ClInclude Include="Component\Light.h" />
+    <ClInclude Include="Component\MeshRenderer.h" />
     <ClInclude Include="SceneSystem\Renderer\ForwardRenderPath.h" />
     <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Component\Renderer.h" />
