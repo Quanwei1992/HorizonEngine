@@ -18,6 +18,7 @@ public:
 	void setMatrix4x4(std::string name, Matrix4x4 matrix);
 
 	void apply();
+	GLProgramPtr getProgram() const;
 private:
 	std::map<std::string, MaterialPropertyPtr> mProperties;
 	GLProgramPtr mProgram;

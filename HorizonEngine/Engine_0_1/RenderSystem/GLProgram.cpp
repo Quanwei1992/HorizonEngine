@@ -3,7 +3,8 @@
 
 
 
-GLProgram::GLProgram()
+GLProgram::GLProgram():
+	mIsInvalid(true)
 {
 	mID = glCreateProgram();
 }
@@ -22,6 +23,7 @@ void GLProgram::attachShader(const GLShaderPtr & shader)
 void GLProgram::link()
 {
 	glLinkProgram(mID);
+	mIsInvalid = !getLinkStatus();
 }
 
 bool GLProgram::getLinkStatus()
@@ -55,6 +57,11 @@ void GLProgram::setValue(GLint uniformID, const Matrix4x4 & value)
 	if (uniformID == -1)return;
 	glUseProgram(mID);	
 	glUniformMatrix4fv(uniformID, 1, GL_FALSE, glm::value_ptr(value));
+}
+
+bool GLProgram::isInvalid() const
+{
+	return mIsInvalid;
 }
 
 GLint GLProgram::getUniformID(const std::string& name)

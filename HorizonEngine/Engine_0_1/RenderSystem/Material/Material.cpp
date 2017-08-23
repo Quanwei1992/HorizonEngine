@@ -39,3 +39,8 @@ void Material::apply()
 		kv.second->apply();
 	}
 }
+
+GLProgramPtr Material::getProgram() const
+{
+	return mProgram;
+}

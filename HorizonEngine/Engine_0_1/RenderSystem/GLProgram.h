@@ -18,7 +18,9 @@ public:
 	GLint getUniformID(const std::string& name);
 	void setValue(GLint uniformID,float value);
 	void setValue(GLint uniformID,const Matrix4x4& value);
+	bool isInvalid() const;
 private:
 	GLuint mID;
+	bool mIsInvalid;
 };
 typedef std::shared_ptr<GLProgram> GLProgramPtr;

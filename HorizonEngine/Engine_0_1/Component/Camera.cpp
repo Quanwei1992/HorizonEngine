@@ -7,7 +7,7 @@ Camera::Camera() :
 	, mAspect(1.7f)
 	, mNearClipPlane(0.001f)
 	, mFarClipPanle(1000.0f)
-	, mViewport()
+	, mViewport(0,0,1,1)
 	, mProjectionType(Projection::Perspective)
 	, mClearColor(Color4f(0,0,0,1))
 	, mClearFlag(ClearFlags::SolidColor)

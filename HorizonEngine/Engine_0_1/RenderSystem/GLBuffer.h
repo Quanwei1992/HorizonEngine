@@ -7,12 +7,16 @@
 class GLBuffer
 {
 public:
-	GLBuffer(GLenum type);
+	enum class GLBufferType {ARRAY,ELEMENT};
+	enum class GLBufferUsage {StaticDraw};
+
+public:
+	GLBuffer(GLBufferType type);
 	~GLBuffer();
 	const GLuint getID() const;
-	void write(GLsizeiptr size, const void * data, GLenum usage);
+	void write(GLsizeiptr size, const void * data, GLBufferUsage usage);
 protected:
 	GLuint mID;
 	GLenum mType;
 };
-typedef std::shared_ptr<GLBuffer> GLBufferPtr;
+using GLBufferPtr = std::shared_ptr<GLBuffer>;

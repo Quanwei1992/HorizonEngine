@@ -37,9 +37,9 @@ void RenderSystem::setViewport(int x, int y, int width, int height)
 	glViewport(x, y, width, height);
 }
 
-void RenderSystem::setProgram(const GLProgramPtr & program)
+void RenderSystem::setMaterial(const MaterialPtr& material)
 {
-	mProgram = program;
+	mMaterial = material;
 }
 
 void RenderSystem::setViewMatrix(const Matrix4x4& viewMat)
@@ -104,12 +104,16 @@ void RenderSystem::render(const RenderOperationPtr& op)
 		break;
 	}
 
-	assert(mProgram);
+	auto program = mMaterial->getProgram();
+	assert(program);
 
-	glUseProgram(mProgram->getID());
-	mProgram->setValue(mProgram->getUniformID("MATRIX_VIEW"), mViewMatrix);
-	mProgram->setValue(mProgram->getUniformID("MATRIX_PROJ"), mProjectionMatrix);
-	mProgram->setValue(mProgram->getUniformID("MATRIX_MODEL"),mModelMatrix);
+	assert(!program->isInvalid());
+
+	glUseProgram(program->getID());
+	program->setValue(program->getUniformID("MATRIX_VIEW"), mViewMatrix);
+	program->setValue(program->getUniformID("MATRIX_PROJ"), mProjectionMatrix);
+	program->setValue(program->getUniformID("MATRIX_MODEL"),mModelMatrix);
+	mMaterial->apply();
 	glBindVertexArray(op->getData()->getVAO()->getID());
 	
 	if (op->getData()->UseIndices()) {

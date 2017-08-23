@@ -14,12 +14,14 @@ public:
 		GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLvoid * pointer);
 	void setIndicesBuffer(GLBufferPtr indicesBuffer);
 	GLBufferPtr getIndicesBuffer();
-	void apply();
 	GLuint getID();
 private:
+	void apply();
+private:
 	GLuint mID;
+	bool mDirty;
 	std::map<int,GLVertexAttribPtr> mAttributes;
 	GLBufferPtr mIndicesBuffer;
 };
-typedef std::shared_ptr<GLVertexArrayObject> GLVertexArrayObjectPtr;
+using GLVertexArrayObjectPtr = std::shared_ptr<GLVertexArrayObject>;
 

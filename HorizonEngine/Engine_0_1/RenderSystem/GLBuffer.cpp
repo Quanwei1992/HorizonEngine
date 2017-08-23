@@ -1,9 +1,15 @@
 #include "stdafx.h"
 #include "GLBuffer.h"
-GLBuffer::GLBuffer(GLenum type)
+GLBuffer::GLBuffer(GLBufferType type)
 {
 	glGenBuffers(1, &mID);
-	mType = type;
+	if (type == GLBufferType::ARRAY) {
+		mType = GL_ARRAY_BUFFER;
+	}
+	else if (type == GLBufferType::ELEMENT) {
+		mType = GL_ELEMENT_ARRAY_BUFFER;
+	}
+	
 }
 
 
@@ -17,8 +23,11 @@ const GLuint GLBuffer::getID() const
 	return mID;
 }
 
-void GLBuffer::write(GLsizeiptr size, const void * data, GLenum usage)
+void GLBuffer::write(GLsizeiptr size, const void * data, GLBufferUsage usage)
 {
 	glBindBuffer(mType, mID);
-	glBufferData(mType, size, data, usage);
+	if (usage == GLBufferUsage::StaticDraw) {
+		glBufferData(mType, size, data, GL_STATIC_DRAW);
+	}
+	
 }

@@ -11,6 +11,7 @@
 #include "RenderWindow.h"
 #include "RenderOperation.h"
 #include "GLProgram.h"
+#include "Material/Material.h"
 #include "Math/Math.h"
 
 class RenderSystem
@@ -29,7 +30,7 @@ public:
 	void setViewport(int x, int y, int width, int height);
 
 	// render state
-	void setProgram(const GLProgramPtr& program);
+	void setMaterial(const MaterialPtr& material);
 	void setViewMatrix(const Matrix4x4& viewMat);
 	void setProjectionMatrix(const Matrix4x4& projMat);
 	void setModelMatrix(const Matrix4x4& modelMat);
@@ -43,7 +44,7 @@ protected:
 private:
 	RenderWindowPtr mRenderWindow;
 	RenderTargetPtr mRenderTarget;
-	GLProgramPtr mProgram;
+	MaterialPtr mMaterial;
 	Matrix4x4 mViewMatrix;
 	Matrix4x4 mProjectionMatrix;
 	Matrix4x4 mModelMatrix;

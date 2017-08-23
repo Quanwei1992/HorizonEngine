@@ -3,7 +3,8 @@
 
 
 
-GLVertexArrayObject::GLVertexArrayObject()
+GLVertexArrayObject::GLVertexArrayObject():
+	mDirty(true)
 {
 	glGenVertexArrays(1, &mID);
 }
@@ -36,6 +37,10 @@ void GLVertexArrayObject::apply()
 
 GLuint GLVertexArrayObject::getID()
 {
+	if (mDirty) {
+		apply();
+		mDirty = false;
+	}
 	return mID;
 }
 
@@ -44,11 +49,13 @@ void GLVertexArrayObject::addVertexAttrib(GLuint slot, std::string name,GLBuffer
 	GLVertexAttrib* attr = new GLVertexAttrib(name, buffer, size, type, normalized, stride, pointer);
 	auto ptr = GLVertexAttribPtr(attr);
 	mAttributes[slot] = ptr;
+	mDirty = true;
 }
 
 void GLVertexArrayObject::setIndicesBuffer(GLBufferPtr indicesBuffer)
 {
 	mIndicesBuffer = indicesBuffer;
+	mDirty = true;
 }
 
 GLBufferPtr GLVertexArrayObject::getIndicesBuffer()

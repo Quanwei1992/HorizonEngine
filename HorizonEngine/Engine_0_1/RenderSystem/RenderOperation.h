@@ -24,4 +24,4 @@ private:
 	OperationType mType;
 	VertexDataPtr mVertexData;
 };
-typedef std::shared_ptr<RenderOperation> RenderOperationPtr;
+using  RenderOperationPtr = std::shared_ptr<RenderOperation>;
